@@ -1,0 +1,10 @@
+node_modules/
+iisnode/
+*.log
+.DS_Store
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+

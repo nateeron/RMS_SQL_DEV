@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Pipeline Run</title>
+</head>
+<body>
+
+<button onclick="callRun()">Run Pipeline</button>
+<pre id="output"></pre>
+
+<script>
+async function callRun() {
+  try {
+    const res = await fetch("https://localhost:44323/Pipeline/run");
+    const json = await res.json();
+    document.getElementById("output").textContent =
+      JSON.stringify(json, null, 2);
+  } catch (e) {
+    console.error(e);
+    alert("Call API failed");
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "BaseUrls": [
+    {
+      "id": 1,
+      "name": "Pipline",
+      "url": "https://localhost:44323"
+    },
+    {
+      "id": 2,
+      "name": "API",
+      "url": "http://localhost:64638"
+    }
+  ],
+  "Set": [
+    {
+      "id": 1,
+      "path": "/Pipeline/run",
+      "method": "GET",
+      "resp": {}
+    },
+    {
+      "id": 2,
+      "path": "/Pipline/Gen_Pipeline_Report",
+      "method": "POST",
+      "resp": {}
+    },
+    {
+      "id": 3,
+      "path": "/ReportPipeline/Report_ClientProjectPosition",
+      "method": "POST",
+      "resp": {}
+    }
+  ]
+}

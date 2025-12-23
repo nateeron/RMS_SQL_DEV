@@ -1,0 +1,33 @@
+# iisnode configuration file
+# This file provides additional configuration options for iisnode
+
+# Number of node.exe processes to launch per application
+nodeProcessCountPerApplication: 1
+
+# Command line to launch node.exe
+nodeProcessCommandLine: "node.exe"
+
+# Enable logging
+loggingEnabled: true
+
+# Directory for log files (relative to application root)
+logDirectory: "iisnode"
+
+# Maximum log file size in KB
+maxLogFileSizeInKB: 128
+
+# Maximum total log file size in KB
+maxTotalLogFileSizeInKB: 1024
+
+# Maximum number of log files to keep
+maxLogFiles: 20
+
+# Enable debugging (set to false in production)
+debuggingEnabled: false
+
+# Flush response immediately
+flushResponse: false
+
+# Graceful shutdown timeout in milliseconds
+gracefulShutdownTimeout: 60000
+
