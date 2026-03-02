@@ -1,0 +1,389 @@
+{
+    "database_name": "RMS_Type_for_Work",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:32.628127",
+    "total_tables": 4,
+    "schema": {
+        "dbo.Type_For_Work": {
+            "schema": "dbo",
+            "table_name": "Type_For_Work",
+            "columns": [
+                {
+                    "column_name": "Type_for_Work_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Type_for_Work_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Software_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Priority",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Detail",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Type_For_Work_Temp": {
+            "schema": "dbo",
+            "table_name": "Type_For_Work_Temp",
+            "columns": [
+                {
+                    "column_name": "Type_For_Work_Temp_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Software_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Type_For_Work_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Priority",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Detail",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 12,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Type_Work_By_Comp": {
+            "schema": "dbo",
+            "table_name": "Type_Work_By_Comp",
+            "columns": [
+                {
+                    "column_name": "Type_For_Work_By_Comp_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Type_For_Work_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Type_For_Work_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Work_Type": {
+            "schema": "dbo",
+            "table_name": "Work_Type",
+            "columns": [
+                {
+                    "column_name": "Work_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Work_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

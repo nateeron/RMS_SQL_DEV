@@ -1,0 +1,371 @@
+{
+    "database_name": "Payment_Sequence",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:31.074154",
+    "total_tables": 4,
+    "schema": {
+        "dbo.Payment_Seq_By_Comp": {
+            "schema": "dbo",
+            "table_name": "Payment_Seq_By_Comp",
+            "columns": [
+                {
+                    "column_name": "Pay_Seq_By_Comp_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Pay_Seq_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Pay_Seq_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "NO",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Payment_Seq_Temp": {
+            "schema": "dbo",
+            "table_name": "Payment_Seq_Temp",
+            "columns": [
+                {
+                    "column_name": "Pay_Seq_Temp_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Dup_Pay_Seq_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Software_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Pay_Seq_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Detail",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 12,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Payment_Seq_Type": {
+            "schema": "dbo",
+            "table_name": "Payment_Seq_Type",
+            "columns": [
+                {
+                    "column_name": "Payment_Seq_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Payment_Seq_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Payment_Sequence": {
+            "schema": "dbo",
+            "table_name": "Payment_Sequence",
+            "columns": [
+                {
+                    "column_name": "Payment_Seq_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Payment_Seq_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Detail",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        }
+    }
+}

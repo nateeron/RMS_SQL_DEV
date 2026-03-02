@@ -1,0 +1,263 @@
+{
+    "database_name": "Other_Income",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:30.959134",
+    "total_tables": 3,
+    "schema": {
+        "dbo.Other_Income": {
+            "schema": "dbo",
+            "table_name": "Other_Income",
+            "columns": [
+                {
+                    "column_name": "Other_Income_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Other_Income_Master_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Other_Income_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Amount",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "((1))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                }
+            ]
+        },
+        "dbo.Other_Income_Master": {
+            "schema": "dbo",
+            "table_name": "Other_Income_Master",
+            "columns": [
+                {
+                    "column_name": "Other_Income_Master_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Other_Income_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Tax_Computation",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": "((1))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Deleted",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": "(getdate())"
+                }
+            ]
+        },
+        "dbo.Other_Income_Type": {
+            "schema": "dbo",
+            "table_name": "Other_Income_Type",
+            "columns": [
+                {
+                    "column_name": "Other_Income_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Other_Income_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                }
+            ]
+        }
+    }
+}

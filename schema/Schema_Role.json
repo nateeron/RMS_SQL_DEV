@@ -1,0 +1,596 @@
+{
+    "database_name": "Role",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:33.024127",
+    "total_tables": 8,
+    "schema": {
+        "dbo.Map_Role_Com": {
+            "schema": "dbo",
+            "table_name": "Map_Role_Com",
+            "columns": [
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Delete",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Role_Func": {
+            "schema": "dbo",
+            "table_name": "Map_Role_Func",
+            "columns": [
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Function_ID",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 32
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Role_Func_Module": {
+            "schema": "dbo",
+            "table_name": "Map_Role_Func_Module",
+            "columns": [
+                {
+                    "column_name": "Map_Role_Func_Module_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Function_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Module_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Role_Menu": {
+            "schema": "dbo",
+            "table_name": "Map_Role_Menu",
+            "columns": [
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Menu_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Role_Sub_Menu": {
+            "schema": "dbo",
+            "table_name": "Map_Role_Sub_Menu",
+            "columns": [
+                {
+                    "column_name": "Map_Menu_Sub_Menu_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Delete",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Role_User": {
+            "schema": "dbo",
+            "table_name": "Map_Role_User",
+            "columns": [
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "User_Login_ID",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Role": {
+            "schema": "dbo",
+            "table_name": "Role",
+            "columns": [
+                {
+                    "column_name": "Role_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Role_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Role_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Software_ID",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Delete",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Role_Type": {
+            "schema": "dbo",
+            "table_name": "Role_Type",
+            "columns": [
+                {
+                    "column_name": "Role_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Role_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

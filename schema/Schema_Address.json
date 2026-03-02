@@ -1,0 +1,252 @@
+{
+    "database_name": "Address",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:27.446144",
+    "total_tables": 3,
+    "schema": {
+        "dbo.Address": {
+            "schema": "dbo",
+            "table_name": "Address",
+            "columns": [
+                {
+                    "column_name": "Address_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Address_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Address_Line1",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "Address_Line2",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 1024
+                },
+                {
+                    "column_name": "City_ID",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "District_ID",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Sub_District_ID",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Country_ID",
+                    "data_type": "int",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Postal_Code_ID",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 64
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 12,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 13,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 14,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 15,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Address_Category_Type": {
+            "schema": "dbo",
+            "table_name": "Address_Category_Type",
+            "columns": [
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Address_Type": {
+            "schema": "dbo",
+            "table_name": "Address_Type",
+            "columns": [
+                {
+                    "column_name": "Address_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Address_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

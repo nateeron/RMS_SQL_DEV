@@ -35,37 +35,37 @@ BEGIN TRY
 	IF @Project_Position_ID IS NOT NULL AND @Project_Position_ID <> ''
 	BEGIN
 		INSERT INTO @ProjectPositionTable (ID)
-		SELECT CAST(value AS INT)
+		SELECT TRY_CAST(LTRIM(RTRIM(value)) AS INT)
 		FROM STRING_SPLIT(@Project_Position_ID, ',')
-		WHERE value <> '' AND ISNUMERIC(value) = 1;
-	END
+		WHERE LTRIM(RTRIM(value)) <> '' AND TRY_CAST(LTRIM(RTRIM(value)) AS INT) IS NOT NULL;
+	END;
 
 	-- Parse Current_Position_ID
 	IF @Current_Position_ID IS NOT NULL AND @Current_Position_ID <> ''
 	BEGIN
 		INSERT INTO @CurrentPositionTable (ID)
-		SELECT CAST(value AS INT)
+		SELECT TRY_CAST(LTRIM(RTRIM(value)) AS INT)
 		FROM STRING_SPLIT(@Current_Position_ID, ',')
-		WHERE value <> '' AND ISNUMERIC(value) = 1;
-	END
+		WHERE LTRIM(RTRIM(value)) <> '' AND TRY_CAST(LTRIM(RTRIM(value)) AS INT) IS NOT NULL;
+	END;
 
 	-- Parse Candidate_ID
 	IF @Candidate_ID IS NOT NULL AND @Candidate_ID <> ''
 	BEGIN
 		INSERT INTO @CandidateTable (ID)
-		SELECT CAST(value AS INT)
+		SELECT TRY_CAST(LTRIM(RTRIM(value)) AS INT)
 		FROM STRING_SPLIT(@Candidate_ID, ',')
-		WHERE value <> '' AND ISNUMERIC(value) = 1;
-	END
+		WHERE LTRIM(RTRIM(value)) <> '' AND TRY_CAST(LTRIM(RTRIM(value)) AS INT) IS NOT NULL;
+	END;
 
 	-- Parse Recruiter_ID
 	IF @Recruiter_ID IS NOT NULL AND @Recruiter_ID <> ''
 	BEGIN
 		INSERT INTO @RecruiterTable (ID)
-		SELECT CAST(value AS INT)
+		SELECT TRY_CAST(LTRIM(RTRIM(value)) AS INT)
 		FROM STRING_SPLIT(@Recruiter_ID, ',')
-		WHERE value <> '' AND ISNUMERIC(value) = 1;
-	END
+		WHERE LTRIM(RTRIM(value)) <> '' AND TRY_CAST(LTRIM(RTRIM(value)) AS INT) IS NOT NULL;
+	END;
 
 	WITH CTE_Position AS (
 		SELECT [P].[Position_ID], [P].[Position_Name], 2 AS [Position_By_Com_Type_ID]  
@@ -97,17 +97,6 @@ BEGIN TRY
 			AND [MCT].[Category_Type_Name] = 'Person'
 			AND [TT].[Tel_Type_Name] = 'Mobile'
 	),
-	CTE_Email AS (
-		SELECT [E].[Email_ID],
-				[E].[Email_Address],
-				[E].[Reference_ID]
-		FROM [Email].[dbo].[Email] E
-		LEFT JOIN [Email].[dbo].[Email_Category_Type] ECT ON [ECT].[Category_Type_ID] = [E].[Category_Type_ID]
-		LEFT JOIN [Email].[dbo].[Email_Type] ET ON [ET].[Email_Type_ID] = [E].[Email_Type_ID]
-		WHERE [E].[Is_Active] = 1
-			AND [ECT].[Category_Type_Name] = 'Person'
-			AND [ET].[Email_Type_Name] = 'Primary'
-	),
 	CTE_LogUpdate AS (
 		SELECT [tt].[Update_By] AS [Recruiter_ID],
 				[tt].[Update_Date],
@@ -123,12 +112,13 @@ BEGIN TRY
 	),
 	CTE_LastSalary AS (
 		SELECT 
-			[CE].[Candidate_ID],
-			[CE].[Salary],
-			ROW_NUMBER() OVER (PARTITION BY [CE].[Candidate_ID] ORDER BY [CE].[Created_Date] DESC) AS RowNum
-		FROM [Candidate].[dbo].[Candidate_Experience] CE
-		WHERE [CE].[Is_Deleted] = 0
-			AND [CE].[Salary] IS NOT NULL
+			[EC].[Candidate_ID],
+			[EC].[Last_Salary] AS [Salary],
+			ROW_NUMBER() OVER (PARTITION BY [EC].[Candidate_ID] ORDER BY [EC].[Start_Date] DESC) AS RowNum
+		FROM [Candidate].[dbo].[Experiences_Candidate] EC
+		WHERE [EC].[Is_Deleted] = 0
+			AND [EC].[Is_Active] = 1
+			AND [EC].[Last_Salary] IS NOT NULL
 	),
 	CTE_CandidateStatus AS (
 		SELECT 
@@ -168,7 +158,7 @@ BEGIN TRY
 			THEN [PHONE].[Tel_Number]
 			ELSE '-'
 		END,
-		[Email] = ISNULL([EMAIL].[Email_Address], '-'),
+		[Email] = ISNULL([P].[Email], '-'),
 		[Last_Position_Name] = [POS].[Position_Name],
 		[ID_Position] = CASE 
 			WHEN [C].[Current_Position_By_Com] = 0 OR [C].[Current_Position_By_Com] IS NULL  
@@ -184,7 +174,6 @@ BEGIN TRY
 	FROM [Candidate].[dbo].[Candidate] C
 	LEFT JOIN [Person].[dbo].[Person] P ON [P].[Person_ID] = [C].[Person_ID]
 	LEFT JOIN CTE_Phone PHONE ON [PHONE].[Reference_ID] = [P].[Person_ID]
-	LEFT JOIN CTE_Email EMAIL ON [EMAIL].[Reference_ID] = [P].[Person_ID]
 	LEFT JOIN CTE_LogUpdate LUC ON [LUC].[Candidate_ID] = [C].[Candidate_ID] AND [C].[Is_Deleted] = 0
 	LEFT JOIN [PERSON].[DBO].[Person] PU ON [PU].[Person_ID] = [LUC].[Recruiter_ID]
 	LEFT JOIN CTE_Position POS ON [POS].[Position_ID] = (
@@ -242,7 +231,7 @@ BEGIN TRY
 		[P].[Birth_Date],
 		[PHONE].[Tel_Country_Code],
 		[PHONE].[Tel_Number],
-		[EMAIL].[Email_Address],
+		[P].[Email],
 		[POS].[Position_Name],
 		[C].[Current_Position],
 		[C].[Current_Position_By_Com],

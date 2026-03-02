@@ -1,0 +1,1161 @@
+{
+    "AppLogin": {
+        "columns": [
+            "LoginID:int",
+            "LoginUserID:nvarchar",
+            "LoginName:nvarchar",
+            "LoginPassword:nvarchar",
+            "LoginEmail:nvarchar",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar",
+            "IsActive:int",
+            "IsDelete:int",
+            "ApproveBy:nvarchar",
+            "isNew:int"
+        ]
+    },
+    "AuditLog": {
+        "columns": [
+            "LogID:int",
+            "EmployeeID:int",
+            "CreatedAt:datetime",
+            "CreatedBy:nvarchar",
+            "UpdatedAt:datetime",
+            "UpdatedBy:nvarchar"
+        ]
+    },
+    "Bank": {
+        "columns": [
+            "BankID:int",
+            "BankCode:nvarchar",
+            "BankNameTH:nvarchar",
+            "BankNameEN:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "Company": {
+        "columns": [
+            "CompanyID:int",
+            "CountryFC_ID:int",
+            "CompanyCode:nvarchar",
+            "CompanyName:nvarchar",
+            "TaxID:nvarchar",
+            "Address:nvarchar",
+            "Phone:nvarchar",
+            "Email:nvarchar",
+            "Website:nvarchar",
+            "CreatedAt:datetime",
+            "CreatedBy:nvarchar",
+            "UpdatedAt:datetime",
+            "UpdatedBy:nvarchar",
+            "IsActive:int",
+            "IsDelete:int"
+        ]
+    },
+    "CompanyEmployeeMap": {
+        "columns": [
+            "MapID:int",
+            "CompanyID:int",
+            "EmployeeID:int",
+            "EmploymentType:nvarchar",
+            "StartDate:date",
+            "EndDate:date",
+            "Status:nvarchar",
+            "CreatedAt:datetime",
+            "CreatedBy:nvarchar"
+        ]
+    },
+    "CountryForCompany_Master": {
+        "columns": [
+            "CountryFC_ID:int",
+            "CountryFC_Code:nvarchar",
+            "CountryFC_NameEN:nvarchar",
+            "CountryFC_NameTH:nvarchar",
+            "CurrencyFC:nvarchar",
+            "TimeZone:nvarchar",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "Department": {
+        "columns": [
+            "DepartmentID:int",
+            "DepartmentCode:nvarchar",
+            "DepartmentName:nvarchar",
+            "DepartmentNameTH:nvarchar",
+            "ParentDepartmentID:int",
+            "ManagerID:int",
+            "Location:nvarchar",
+            "Remark:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "Employee": {
+        "columns": [
+            "EmployeeID:int",
+            "CompanyID:int",
+            "EmployeeCode:nvarchar",
+            "FingerprintCode:nvarchar",
+            "PrefixID:int",
+            "FirstNameEN:nvarchar",
+            "LastNameEN:nvarchar",
+            "FirstNameTH:nvarchar",
+            "LastNameTH:nvarchar",
+            "NickName:nvarchar",
+            "Gender:int",
+            "DateOfBirth:date",
+            "Nationality:int",
+            "Personal_Identification_Number:nvarchar",
+            "Social_Insurance_Number:nvarchar",
+            "MaritalStatus:int",
+            "ProfileImage:nvarchar",
+            "IsActive:int",
+            "IsDelete:int",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "EmployeeAttendance": {
+        "columns": [
+            "AttendanceID:int",
+            "EmployeeID:int",
+            "EmployeeCode:nvarchar",
+            "WorkDate:date",
+            "CheckIn:datetime",
+            "CheckOut:datetime",
+            "IsLate:bit",
+            "IsOverBreak:bit",
+            "IsEarlyLeave:bit",
+            "MissingPunch:bit",
+            "RegularHours:decimal",
+            "OTHours:decimal",
+            "HolidayOTHours:decimal",
+            "Remark:nvarchar"
+        ]
+    },
+    "EmployeeContact": {
+        "columns": [
+            "ContactID:int",
+            "EmployeeID:int",
+            "Email:nvarchar",
+            "Phone:nvarchar",
+            "Address:nvarchar",
+            "EmergencyName:nvarchar",
+            "EmergencyPhone:nvarchar",
+            "RegistrationAddressLine1:nvarchar",
+            "RegistrationAddressLine2:nvarchar",
+            "RegistrationCountry:nvarchar",
+            "RegistrationCity:nvarchar",
+            "RegistrationDistrict:nvarchar",
+            "RegistrationSubDistrict:nvarchar",
+            "RegistrationPostalCode:nvarchar",
+            "CurrentAddressSameAsRegistration:bit",
+            "CurrentAddressLine1:nvarchar",
+            "CurrentAddressLine2:nvarchar",
+            "CurrentCountry:nvarchar",
+            "CurrentCity:nvarchar",
+            "CurrentDistrict:nvarchar",
+            "CurrentSubDistrict:nvarchar",
+            "CurrentPostalCode:nvarchar"
+        ]
+    },
+    "EmployeeContract": {
+        "columns": [
+            "ContractID:int",
+            "EmployeeID:int",
+            "EffectiveDate:date",
+            "BeginDate:date",
+            "ContractExpirationDate:date",
+            "RetirementYear:nvarchar",
+            "Trial:int",
+            "TrialEndDate:date",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "EmployeeJob": {
+        "columns": [
+            "JobID:int",
+            "EmployeeID:int",
+            "DepartmentID:int",
+            "PositionID:int",
+            "EmploymentTypeID:int",
+            "EmploymentType:nvarchar",
+            "HireDate:date",
+            "ProbationEndDate:date",
+            "WorkLocation:nvarchar",
+            "ManagerID:int"
+        ]
+    },
+    "EmployeeLeaveBalance": {
+        "columns": [
+            "BalanceID:int",
+            "EmployeeID:int",
+            "LeaveTypeID:int",
+            "Year:int",
+            "UsedDays:decimal",
+            "RemainingDays:decimal"
+        ]
+    },
+    "EmployeeLeaveRequest": {
+        "columns": [
+            "LeaveRequestID:int",
+            "EmployeeID:int",
+            "LeaveTypeID:int",
+            "StartDate:date",
+            "EndDate:date",
+            "StartTime:datetime",
+            "EndTime:datetime",
+            "TotalDays:decimal",
+            "Reason:nvarchar",
+            "Status:nvarchar",
+            "ApproveBy:nvarchar",
+            "ApproveDate:datetime",
+            "CreateDate:datetime",
+            "UpdateDate:datetime"
+        ]
+    },
+    "EmployeeMasterMap": {
+        "columns": [
+            "EmployeeMasterMapID:int",
+            "EmployeeID:int",
+            "EmployeeCode:nvarchar",
+            "TitleID:int",
+            "Title:nvarchar",
+            "FirstName_TH:nvarchar",
+            "LastName_TH:nvarchar",
+            "FirstName_EN:nvarchar",
+            "LastName_EN:nvarchar",
+            "Nickname:nvarchar",
+            "GenderID:int",
+            "Gender:nvarchar",
+            "DateOfBirth:date",
+            "Age:int",
+            "NationalityID:int",
+            "Nationality:nvarchar",
+            "MaritalStatusID:int",
+            "MaritalStatus:nvarchar",
+            "ContactID:int",
+            "Email:nvarchar",
+            "Phone:nvarchar",
+            "JobID:int",
+            "DepartmentID:int",
+            "PositionID:int",
+            "HireDate:date",
+            "EmploymentStatus:nvarchar",
+            "PersonalIdentification:nvarchar",
+            "SocialInsurance:nvarchar",
+            "EmployeeTypeID:int",
+            "EmployeeType:nvarchar",
+            "Organization:nvarchar",
+            "SalaryID:int",
+            "Salary:decimal",
+            "SalaryAdvanceType:nvarchar",
+            "SalaryAdvance:decimal",
+            "SocialInsuranceSetting:nvarchar",
+            "SocialInsuranceConstants:decimal",
+            "SocialInsuranceCalculation:nvarchar",
+            "TAX:nvarchar",
+            "ConstantTAXPerMonth:decimal",
+            "TAXCalculationMonth:nvarchar",
+            "ContractID:int",
+            "EffectiveDate:date",
+            "BeginDate:date",
+            "ContractExpirationDate:date",
+            "RetirementYear:nvarchar",
+            "TrialDays:int",
+            "TrialEndDate:date",
+            "PaymentID:int",
+            "PaymentMethod:nvarchar",
+            "CompanyPaymentAccount:nvarchar",
+            "Bank:nvarchar",
+            "BankBranchCode:nvarchar",
+            "BankAccount:nvarchar",
+            "Details:nvarchar",
+            "Hashtag:nvarchar",
+            "CreatedBy:nvarchar",
+            "CreatedAt:datetime",
+            "UpdatedBy:nvarchar",
+            "UpdatedAt:datetime",
+            "IsActive:bit",
+            "IsDelete:bit"
+        ]
+    },
+    "EmployeeOvertimeRequest": {
+        "columns": [
+            "OTRequestID:int",
+            "EmployeeID:int",
+            "RequestDate:date",
+            "StartTime:datetime",
+            "EndTime:datetime",
+            "OTHours:decimal",
+            "OTType:nvarchar",
+            "ApprovedBy:nvarchar",
+            "Status:nvarchar"
+        ]
+    },
+    "EmployeePaymentInfo": {
+        "columns": [
+            "PaymentID:int",
+            "EmployeeID:int",
+            "PaymentMethod:nvarchar",
+            "CompanyPaymentAccount:nvarchar",
+            "Bank:nvarchar",
+            "BankBranchCode:nvarchar",
+            "BankAccount:nvarchar",
+            "Details:nvarchar",
+            "Hashtag:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "EmployeePayroll": {
+        "columns": [
+            "PayrollID:int",
+            "EmployeeID:int",
+            "Salary:decimal",
+            "BankAccountNo:nvarchar",
+            "BenefitGroup:nvarchar",
+            "TaxID:nvarchar"
+        ]
+    },
+    "EmployeePayrollTransaction": {
+        "columns": [
+            "PayrollTransID:int",
+            "EmployeeID:int",
+            "Period:char",
+            "BaseSalary:decimal",
+            "TotalOT:decimal",
+            "AdvancePayment:decimal",
+            "Deductions:decimal",
+            "NetSalary:decimal",
+            "AccumulatedNetSalary:decimal",
+            "CreatedAt:datetime"
+        ]
+    },
+    "EmployeePosition": {
+        "columns": [
+            "EmployeePositionID:int",
+            "EmployeeID:int",
+            "PositionID:int",
+            "DepartmentID:int",
+            "EffectiveDate:date",
+            "EndDate:date",
+            "IsPrimary:bit",
+            "IsActing:bit",
+            "PromotionReason:nvarchar",
+            "Remark:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "EmployeeSalary": {
+        "columns": [
+            "SalaryID:int",
+            "EmployeeID:int",
+            "Salary:decimal",
+            "SalaryAdvancedType:nvarchar",
+            "SalaryAdvance:decimal",
+            "SocialInsuranceSetting:nvarchar",
+            "SocialInsuranceConstants:decimal",
+            "SocialInsuranceCalculationMonth:nvarchar",
+            "TaxID:nvarchar",
+            "ConstantTAXPerMonth:decimal",
+            "TAXCalculationMonth:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "EmployeeStatus": {
+        "columns": [
+            "StatusID:int",
+            "EmployeeID:int",
+            "EmploymentStatus:int",
+            "ResignDate:date",
+            "Reason:nvarchar"
+        ]
+    },
+    "EmployeeTaxProfile": {
+        "columns": [
+            "TaxProfileID:int",
+            "EmployeeID:int",
+            "TaxID:nvarchar",
+            "TaxStatus:nvarchar",
+            "Dependents:int",
+            "Allowances:decimal",
+            "InsuranceDeduction:decimal",
+            "ProvidentFund:decimal",
+            "OtherDeductions:decimal",
+            "EffectiveDate:date"
+        ]
+    },
+    "EmployeeTaxTransaction": {
+        "columns": [
+            "TaxTransID:int",
+            "EmployeeID:int",
+            "Period:char",
+            "GrossIncome:decimal",
+            "TaxableIncome:decimal",
+            "TaxWithheld:decimal",
+            "SocialSecurity:decimal",
+            "NetIncome:decimal",
+            "CreatedAt:datetime",
+            "CreatedBy:nvarchar"
+        ]
+    },
+    "EmployeeType": {
+        "columns": [
+            "EmployeeTypeID:int",
+            "EmployeeTypeCode:nvarchar",
+            "EmployeeTypeName:nvarchar",
+            "EmployeeTypeNameTH:nvarchar",
+            "Description:nvarchar",
+            "PaymentType:nvarchar",
+            "TaxType:nvarchar",
+            "BenefitEligible:bit",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "EmploymentStatus": {
+        "columns": [
+            "EmploymentStatusID:int",
+            "EmploymentStatusCode:nchar",
+            "EmploymentStatusName:nvarchar",
+            "EmploymentStatusNameEN:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "CreatedAt:datetime",
+            "UpdatedAt:datetime",
+            "UpdatedBy:nvarchar"
+        ]
+    },
+    "EntityPrefix": {
+        "columns": [
+            "PrefixID:int",
+            "EntityName:nvarchar",
+            "PrefixCode:nvarchar",
+            "LastRunningNumber:int",
+            "FormatLength:int",
+            "Description:nvarchar",
+            "ExampleCode:nvarchar",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "FN_Employee_InEx": {
+        "columns": [
+            "FN_Employee_InExID:int",
+            "CompanyID:int",
+            "EmployeeID:int",
+            "FinancialSettingID:int",
+            "InExAmount:numeric",
+            "CreateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateDate:datetime",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "FN_IncomeExp_Setup": {
+        "columns": [
+            "FinancialSettingID:int",
+            "CompanyID:nvarchar",
+            "FinancialType:int",
+            "InExType40:int",
+            "NameEN:nvarchar",
+            "NameTH:nvarchar",
+            "Rounding:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateDate:datetime",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "FN_PayrollCalc_Header": {
+        "columns": [
+            "CalcID:int",
+            "EmployeeID:int",
+            "CompanyID:int",
+            "PeriodYear:int",
+            "PeriodMonth:int",
+            "CalcVersion:int",
+            "CalcType:nvarchar",
+            "CalculatedDate:datetime",
+            "CalculatedBy:nvarchar",
+            "BaseSalary:numeric",
+            "TotalIncome:numeric",
+            "TotalExpense:numeric",
+            "NetPay:numeric",
+            "TaxAmount:numeric",
+            "FormulaVersion:int",
+            "IsApproved:nvarchar"
+        ]
+    },
+    "FN_PayrollCalc_Item": {
+        "columns": [
+            "CalcItemID:int",
+            "CalcID:int",
+            "ItemID:int",
+            "Amount:numeric",
+            "IsIncome:int",
+            "IsTaxable:nvarchar",
+            "Category:nvarchar",
+            "CreatedDate:datetime"
+        ]
+    },
+    "Formula_Master": {
+        "columns": [
+            "FormulaId:int",
+            "Code:varchar",
+            "Title:nvarchar",
+            "Description:nvarchar",
+            "CurrentVersion:int",
+            "IsActive:bit",
+            "CreatedBy:nvarchar",
+            "CreatedDate:datetime",
+            "UpdatedBy:nvarchar",
+            "UpdatedDate:datetime"
+        ]
+    },
+    "Formula_Variable": {
+        "columns": [
+            "VariableId:int",
+            "FormulaId:int",
+            "VariableName:varchar",
+            "DataType:varchar",
+            "Description:nvarchar",
+            "SortOrder:int",
+            "CreatedDate:datetime"
+        ]
+    },
+    "Formula_Version": {
+        "columns": [
+            "VersionId:int",
+            "FormulaId:int",
+            "VersionNumber:int",
+            "JsonFlow:nvarchar",
+            "ChangeLog:nvarchar",
+            "CreatedBy:nvarchar",
+            "CreatedDate:datetime"
+        ]
+    },
+    "Gender": {
+        "columns": [
+            "Gender_ID:int",
+            "Gender_Name:nvarchar",
+            "Priority:int",
+            "Detail:nvarchar",
+            "Is_Active:bit",
+            "DateCreate:datetime",
+            "DateUpdate:datetime"
+        ]
+    },
+    "HRAgeGroupStats": {
+        "columns": [
+            "AgeStatID:int",
+            "Year:int",
+            "AgeRange:nvarchar",
+            "EmployeeCount:int"
+        ]
+    },
+    "HRTimeTrackingStats": {
+        "columns": [
+            "TimeStatID:int",
+            "Period:char",
+            "TotalEmployees:int",
+            "OnTimeCount:int",
+            "LateCount:int",
+            "EarlyLeaveCount:int",
+            "OverBreakCount:int",
+            "MissingPunchCount:int",
+            "TotalOTHours:decimal"
+        ]
+    },
+    "HRYearlyStats": {
+        "columns": [
+            "YearStatID:int",
+            "Year:int",
+            "TotalEmployees:int",
+            "TurnoverRate:decimal",
+            "ActiveEmployees:int",
+            "ResignedEmployees:int"
+        ]
+    },
+    "LeaveType": {
+        "columns": [
+            "LeaveTypeID:int",
+            "LeaveCode:nvarchar",
+            "LeaveNameTH:nvarchar",
+            "LeaveNameEN:nvarchar",
+            "Paid:bit",
+            "MaxPerYear:int",
+            "Description:nvarchar",
+            "IsActive:bit"
+        ]
+    },
+    "LoginSetUp": {
+        "columns": [
+            "LoginSetUpID:int",
+            "LoginID:int",
+            "SelectCom:int",
+            "modeTheme:nvarchar"
+        ]
+    },
+    "Map_Financial_included": {
+        "columns": [
+            "FinancialSettingID:int",
+            "IncludedFinancialID:int",
+            "IsActive:bit",
+            "IsDelete:bit"
+        ]
+    },
+    "MAP_User_Company": {
+        "columns": [
+            "MAP_CompanyID:int",
+            "UserID:int",
+            "CompanyID:int",
+            "CountryFC_ID:int",
+            "IsActive:int",
+            "IsDelete:int",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "MaritalStatus": {
+        "columns": [
+            "MaritalStatusID:int",
+            "MaritalCode:nvarchar",
+            "MaritalName:nvarchar",
+            "MaritalNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "Master_FinancialType": {
+        "columns": [
+            "FinancialTypeID:int",
+            "FinancialTypeNameEN:nvarchar",
+            "FinancialTypeNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit"
+        ]
+    },
+    "Master_GroupSetupName": {
+        "columns": [
+            "Master_GroupMenuSetupID:int",
+            "GroupSetupName:nvarchar"
+        ]
+    },
+    "Master_IncludedFinancial": {
+        "columns": [
+            "IncludedFinancialID:int",
+            "includedNameEN:nvarchar",
+            "includedNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit"
+        ]
+    },
+    "Master_IncomeType_40": {
+        "columns": [
+            "IncomeTypeID:int",
+            "Section40:nvarchar",
+            "IncomeTypeCode:nvarchar",
+            "IncomeTypeName:nvarchar",
+            "IncomeTypeNameTH:nvarchar",
+            "Example:nvarchar",
+            "ExpenseRate:decimal",
+            "ExpenseMax:decimal",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "CreateBy:nvarchar"
+        ]
+    },
+    "MasterData_MenuGroup": {
+        "columns": [
+            "MenuGroupID:int",
+            "GroupCode:nvarchar",
+            "GroupName:nvarchar",
+            "GroupNameTH:nvarchar",
+            "Icon:nvarchar",
+            "SortOrder:int",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "MasterData_MenuItem": {
+        "columns": [
+            "MenuID:int",
+            "MenuGroupID:int",
+            "MenuCode:nvarchar",
+            "MenuName:nvarchar",
+            "MenuNameTH:nvarchar",
+            "RoutePath:nvarchar",
+            "Component:nvarchar",
+            "TableRef:nvarchar",
+            "Icon:nvarchar",
+            "SortOrder:int",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "MasterData_RoleMenuAccess": {
+        "columns": [
+            "AccessID:int",
+            "RoleID:int",
+            "MenuID:int",
+            "CanView:bit",
+            "CanAdd:bit",
+            "CanEdit:bit",
+            "CanDelete:bit",
+            "CanExport:bit",
+            "CanApprove:bit",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "MN_Master_Menu": {
+        "columns": [
+            "MenuID:int",
+            "ParentID:int",
+            "MenuLevel:int",
+            "MenuGroup:nvarchar",
+            "MenuCode:nvarchar",
+            "MenuName:nvarchar",
+            "RoutePath:nvarchar",
+            "Component:nvarchar",
+            "Icon:nvarchar",
+            "SortOrder:int",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:int",
+            "UpdateBy:int"
+        ]
+    },
+    "MN_Master_Role": {
+        "columns": [
+            "RoleID:int",
+            "RoleLevel:int",
+            "RoleName:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime"
+        ]
+    },
+    "MN_Role_Menu_Access": {
+        "columns": [
+            "AccessID:int",
+            "RoleID:int",
+            "MenuID:int",
+            "CanView:bit",
+            "CanAdd:bit",
+            "CanEdit:bit",
+            "CanDelete:bit",
+            "IsActive:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime"
+        ]
+    },
+    "Nationality": {
+        "columns": [
+            "NationalityID:int",
+            "NationalityCode:nchar",
+            "NationalityName:nvarchar",
+            "NationalityNameEN:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar",
+            "CreateDate:datetime",
+            "UpdateDate:datetime"
+        ]
+    },
+    "PaymentMethod": {
+        "columns": [
+            "PaymentMethodID:int",
+            "MethodCode:nvarchar",
+            "MethodNameEN:nvarchar",
+            "MethodNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "PayrollExpenseDetail": {
+        "columns": [
+            "Id:int",
+            "PayrollID:int",
+            "Code:varchar",
+            "Name:varchar",
+            "Amount:decimal",
+            "Type:varchar",
+            "IsDeductible:bit"
+        ]
+    },
+    "PayrollFormulaSnapshot": {
+        "columns": [
+            "Id:int",
+            "PayrollID:int",
+            "FormulaJSON:nvarchar"
+        ]
+    },
+    "PayrollHeader": {
+        "columns": [
+            "PayrollID:int",
+            "EmployeeID:int",
+            "PeriodYear:int",
+            "PeriodMonth:int",
+            "BaseSalary:decimal",
+            "TotalIncome:decimal",
+            "TotalExpense:decimal",
+            "NetPay:decimal",
+            "AnnualTaxableIncome:decimal",
+            "AnnualTax:decimal",
+            "MonthlyTax:decimal",
+            "SSO:decimal",
+            "MonthsWorked:int",
+            "Status:varchar",
+            "ApprovedDate:datetime",
+            "ApprovedBy:varchar"
+        ]
+    },
+    "PayrollIncomeDetail": {
+        "columns": [
+            "Id:int",
+            "PayrollID:int",
+            "Code:varchar",
+            "Name:varchar",
+            "Amount:decimal",
+            "Section40:varchar",
+            "IsTaxable:bit"
+        ]
+    },
+    "PayrollStepLog": {
+        "columns": [
+            "StepID:int",
+            "PayrollID:int",
+            "StepCode:varchar",
+            "Title:varchar",
+            "Description:varchar",
+            "Amount:decimal"
+        ]
+    },
+    "Position": {
+        "columns": [
+            "PositionID:int",
+            "PositionCode:nvarchar",
+            "PositionName:nvarchar",
+            "PositionNameTH:nvarchar",
+            "DepartmentID:int",
+            "PositionLevel:nvarchar",
+            "Grade:nvarchar",
+            "JobDescription:nvarchar",
+            "Responsibility:nvarchar",
+            "Requirement:nvarchar",
+            "SalaryMin:decimal",
+            "SalaryMax:decimal",
+            "Remark:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "PositionLevel": {
+        "columns": [
+            "LevelID:int",
+            "LevelCode:nvarchar",
+            "LevelName:nvarchar",
+            "LevelNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "CreateDate:datetime"
+        ]
+    },
+    "SalaryAdvancedType": {
+        "columns": [
+            "salaryAdvancedTypeID:int",
+            "salaryAdvancedTypeNameEN:nvarchar",
+            "salaryAdvancedTypeNameTH:nvarchar",
+            "salaryAdvancedTypeDescription:nvarchar",
+            "IsActive:int",
+            "IsDelete:int",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "SalaryExpense": {
+        "columns": [
+            "ExpenseID:int",
+            "ExpenseName:nvarchar",
+            "ExpenseCode:nvarchar",
+            "ExpenseType:nvarchar",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "SalaryIncome": {
+        "columns": [
+            "IncomeID:int",
+            "IncomeCode:nvarchar",
+            "IncomeName:nvarchar",
+            "IncomeType:nvarchar",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "CreateBy:nvarchar",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "SetupMenuByCompany_Financial": {
+        "columns": [
+            "SetupMenu_IncludedID:int",
+            "CompanyID:int",
+            "GroupSetupID:int",
+            "TableName:nvarchar",
+            "MenuID:int",
+            "Disable:bit",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "UpdateDate:datetime",
+            "CreateDate:datetime",
+            "UpdateBy:nvarchar",
+            "CreateBy:nvarchar"
+        ]
+    },
+    "SocialInsurance": {
+        "columns": [
+            "SocialInsuranceSettingID:int",
+            "SettingCode:nchar",
+            "SettingNameEN:nvarchar",
+            "SettingNameTH:nvarchar",
+            "Description:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:nvarchar"
+        ]
+    },
+    "sysdiagrams": {
+        "columns": [
+            "name:nvarchar",
+            "principal_id:int",
+            "diagram_id:int",
+            "version:int",
+            "definition:varbinary"
+        ]
+    },
+    "SystemLog": {
+        "columns": [
+            "LogID:int",
+            "LogLevel:nvarchar",
+            "LogCategory:nvarchar",
+            "LogMessage:nvarchar",
+            "LogDetails:nvarchar",
+            "Source:nvarchar",
+            "UserID:nvarchar",
+            "SessionID:nvarchar",
+            "RequestID:nvarchar",
+            "IPAddress:nvarchar",
+            "UserAgent:nvarchar",
+            "ExceptionType:nvarchar",
+            "ExceptionMessage:nvarchar",
+            "StackTrace:nvarchar",
+            "AdditionalData:nvarchar",
+            "CreatedAt:datetime2",
+            "CreatedBy:nvarchar",
+            "IsActive:bit",
+            "IsDeleted:bit"
+        ]
+    },
+    "Tax": {
+        "columns": [
+            "TaxID:int",
+            "TaxType:nvarchar",
+            "TaxMethod:nvarchar",
+            "FixedAmount:decimal",
+            "TaxRate:decimal",
+            "TaxBase:decimal",
+            "TaxLevel:nvarchar",
+            "CalculationMonth:nvarchar",
+            "Description:nvarchar",
+            "DescriptionTH:nvarchar",
+            "IsActive:bit",
+            "IsDelete:bit",
+            "CreateDate:datetime",
+            "UpdateDate:datetime",
+            "UpdateBy:int"
+        ]
+    },
+    "Tax_Bracket": {
+        "columns": [
+            "BracketId:int",
+            "TaxID:int",
+            "LevelNumber:int",
+            "IncomeMin:decimal",
+            "IncomeMax:decimal",
+            "Rate:decimal",
+            "FixedAmount:decimal",
+            "Description:nvarchar",
+            "EffectiveDate:date",
+            "ExpireDate:date"
+        ]
+    },
+    "TaxRate": {
+        "columns": [
+            "TaxRateID:int",
+            "MinIncome:decimal",
+            "MaxIncome:decimal",
+            "RatePercent:decimal"
+        ]
+    },
+    "Title": {
+        "columns": [
+            "Title_ID:int",
+            "Original:nvarchar",
+            "Translate:nvarchar",
+            "IsActive:int",
+            "IsDelete:int"
+        ]
+    },
+    "UserRole": {
+        "columns": [
+            "UserRoleID:int",
+            "LoginID:int",
+            "RoleID:int",
+            "AssignedDate:datetime"
+        ]
+    },
+    "vw_Address_Full": {
+        "columns": [
+            "Country_ID:int",
+            "CountryName:nvarchar",
+            "State_ID:int",
+            "StateName:nvarchar",
+            "District_ID:int",
+            "DistrictName:nvarchar",
+            "SubDistrict_ID:int",
+            "SubDistrictName:nvarchar",
+            "PostalCode:nvarchar"
+        ]
+    },
+    "vw_EmployeeFullInfo": {
+        "columns": [
+            "EmployeeID:int",
+            "EmployeeCode:nvarchar",
+            "Prefix:nvarchar",
+            "FirstName:nvarchar",
+            "LastName:nvarchar",
+            "FullName:nvarchar",
+            "Gender:char",
+            "DateOfBirth:date",
+            "NationalID:nvarchar",
+            "PassportNo:nvarchar",
+            "MaritalStatus:nvarchar",
+            "ProfileImage:nvarchar",
+            "ContactID:int",
+            "Email:nvarchar",
+            "Phone:nvarchar",
+            "Address:nvarchar",
+            "EmergencyName:nvarchar",
+            "EmergencyPhone:nvarchar",
+            "JobID:int",
+            "DepartmentID:int",
+            "PositionID:int",
+            "EmploymentType:nvarchar",
+            "HireDate:date",
+            "ProbationEndDate:date",
+            "WorkLocation:nvarchar",
+            "ManagerID:int",
+            "ManagerCode:nvarchar",
+            "ManagerName:nvarchar",
+            "StatusID:int",
+            "Status:nvarchar",
+            "ResignDate:date",
+            "ResignReason:nvarchar",
+            "PayrollID:int",
+            "Salary:decimal",
+            "BankAccountNo:nvarchar",
+            "BenefitGroup:nvarchar",
+            "TaxID:nvarchar",
+            "Age:int",
+            "YearsOfService:int",
+            "MonthsOfService:int"
+        ]
+    },
+    "vw_FullAddress": {
+        "columns": [
+            "Country_ID:int",
+            "CountryName:nvarchar",
+            "State_ID:int",
+            "StateName:nvarchar",
+            "District_ID:int",
+            "DistrictName:nvarchar",
+            "SubDistrict_ID:int",
+            "SubDistrictName:nvarchar",
+            "PostalCode:nvarchar"
+        ]
+    }
+}

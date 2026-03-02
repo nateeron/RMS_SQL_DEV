@@ -1,0 +1,388 @@
+{
+    "database_name": "Training",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:33.796124",
+    "total_tables": 11,
+    "schema": {
+        "dbo.book": {
+            "schema": "dbo",
+            "table_name": "book",
+            "columns": [
+                {
+                    "column_name": "id",
+                    "data_type": "numeric",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 19,
+                    "scale": 0
+                },
+                {
+                    "column_name": "author",
+                    "data_type": "varchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "isbn",
+                    "data_type": "varchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "published_date",
+                    "data_type": "datetime",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "title",
+                    "data_type": "varchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                }
+            ]
+        },
+        "dbo.Brand": {
+            "schema": "dbo",
+            "table_name": "Brand",
+            "columns": [
+                {
+                    "column_name": "PKBrand",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Brand",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.CustomerInformation": {
+            "schema": "dbo",
+            "table_name": "CustomerInformation",
+            "columns": [
+                {
+                    "column_name": "PKCustomerInformation",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "EmailAddress",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "Password",
+                    "data_type": "nchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "PKTitle",
+                    "data_type": "nchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "Name",
+                    "data_type": "nchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "CreditCardNumber",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "HomeAddress",
+                    "data_type": "nchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.MappingCustomerProduct": {
+            "schema": "dbo",
+            "table_name": "MappingCustomerProduct",
+            "columns": [
+                {
+                    "column_name": "PKCustomerInformation",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "PKProductInformation",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.Price": {
+            "schema": "dbo",
+            "table_name": "Price",
+            "columns": [
+                {
+                    "column_name": "PKPrice",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Price",
+                    "data_type": "money",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 19,
+                    "scale": 4
+                }
+            ]
+        },
+        "dbo.ProductName": {
+            "schema": "dbo",
+            "table_name": "ProductName",
+            "columns": [
+                {
+                    "column_name": "PKProductName",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ProductName",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.ProductsInformation": {
+            "schema": "dbo",
+            "table_name": "ProductsInformation",
+            "columns": [
+                {
+                    "column_name": "PKProductInformation",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "PKProductType",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ProductName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 120
+                },
+                {
+                    "column_name": "PKBrand",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Price",
+                    "data_type": "money",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 19,
+                    "scale": 4
+                },
+                {
+                    "column_name": "PKSize",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        },
+        "dbo.ProductType": {
+            "schema": "dbo",
+            "table_name": "ProductType",
+            "columns": [
+                {
+                    "column_name": "PKProductType",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ProductType",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.Size": {
+            "schema": "dbo",
+            "table_name": "Size",
+            "columns": [
+                {
+                    "column_name": "PKSize",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Size",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "dbo.sysdiagrams": {
+            "schema": "dbo",
+            "table_name": "sysdiagrams",
+            "columns": [
+                {
+                    "column_name": "name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 128
+                },
+                {
+                    "column_name": "principal_id",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "diagram_id",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "version",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "definition",
+                    "data_type": "varbinary",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": -1
+                }
+            ]
+        },
+        "dbo.Title": {
+            "schema": "dbo",
+            "table_name": "Title",
+            "columns": [
+                {
+                    "column_name": "PKTitle",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Title",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        }
+    }
+}

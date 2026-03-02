@@ -1,0 +1,64 @@
+{
+    "database_name": "Log",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:30.016153",
+    "total_tables": 1,
+    "schema": {
+        "dbo.Log": {
+            "schema": "dbo",
+            "table_name": "Log",
+            "columns": [
+                {
+                    "column_name": "Log_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Software_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Function_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "Detail",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": -1
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

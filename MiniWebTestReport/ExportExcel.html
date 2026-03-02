@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SheetJS Style Demo</title>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<button onclick="exportExcel()">Export Excel</button>
+
+<script>
+function exportExcel() {
+
+    const data = [
+        ["Client Name", "Email", "Country"],
+        ["ABC Co.", "abc@mail.com", "Thailand"],
+        ["XYZ Ltd.", "xyz@mail.com", "USA"]
+    ];
+
+    const ws = XLSX.utils.aoa_to_sheet(data);
+
+    // จัด text header กลาง
+    ["A1","B1","C1"].forEach(c => {
+        ws[c].s = {
+            alignment: {
+                horizontal: "center",
+                vertical: "center"
+            }
+        };
+    });
+
+    // กำหนดความกว้างคอลัมน์
+    ws['!cols'] = [
+        { wpx: 180 },
+        { wpx: 220 },
+        { wpx: 120 }
+    ];
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Demo");
+
+    XLSX.writeFile(wb, "SheetJS_Demo.xlsx");
+}
+</script>
+
+</body>
+</html>

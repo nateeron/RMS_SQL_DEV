@@ -1,0 +1,218 @@
+{
+    "database_name": "Mobile",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:30.560133",
+    "total_tables": 3,
+    "schema": {
+        "dbo.Mobile_Category_Type": {
+            "schema": "dbo",
+            "table_name": "Mobile_Category_Type",
+            "columns": [
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Update_Time",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Tel": {
+            "schema": "dbo",
+            "table_name": "Tel",
+            "columns": [
+                {
+                    "column_name": "Tel_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Tel_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Tel_Country_ID",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Tel_Number",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Update_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        },
+        "dbo.Tel_Type": {
+            "schema": "dbo",
+            "table_name": "Tel_Type",
+            "columns": [
+                {
+                    "column_name": "Tel_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Tel_Type_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

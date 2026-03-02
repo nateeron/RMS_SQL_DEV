@@ -1,0 +1,647 @@
+{
+    "server": "10.88.88.200",
+    "export_date": "2025-12-23T15:09:51.051631",
+    "total_databases": 64,
+    "databases": [
+        {
+            "database_name": "Accounting",
+            "database_id": 48,
+            "create_date": "2023-08-07T12:28:56.017000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Address",
+            "database_id": 5,
+            "create_date": "2023-03-28T09:09:28.070000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "ADI_Human",
+            "database_id": 65,
+            "create_date": "2025-09-29T11:05:34.797000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "ADILibrary",
+            "database_id": 41,
+            "create_date": "2023-11-30T12:11:06.223000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Announcement",
+            "database_id": 53,
+            "create_date": "2024-02-21T15:59:39.700000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Asset",
+            "database_id": 42,
+            "create_date": "2023-04-20T11:15:58.563000",
+            "collation_name": "Thai_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "AuthenUser",
+            "database_id": 61,
+            "create_date": "2024-09-06T11:21:21.590000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Bank",
+            "database_id": 54,
+            "create_date": "2024-02-22T13:38:26.017000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Candidate",
+            "database_id": 6,
+            "create_date": "2023-03-28T09:52:14.380000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "CheckCertificate",
+            "database_id": 52,
+            "create_date": "2024-02-16T10:06:44.837000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Company",
+            "database_id": 34,
+            "create_date": "2023-03-27T13:17:15.560000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Compare_Value",
+            "database_id": 7,
+            "create_date": "2023-03-27T12:08:39.310000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Configuration",
+            "database_id": 51,
+            "create_date": "2023-10-26T12:02:25.543000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Contact",
+            "database_id": 8,
+            "create_date": "2023-11-24T11:20:42.187000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Country",
+            "database_id": 9,
+            "create_date": "2023-03-27T12:16:28.600000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Currency",
+            "database_id": 10,
+            "create_date": "2023-03-27T12:22:46.703000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "DB_Test",
+            "database_id": 63,
+            "create_date": "2024-10-25T14:15:51.033000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Dictionary",
+            "database_id": 55,
+            "create_date": "2024-02-23T12:15:32.027000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Education",
+            "database_id": 11,
+            "create_date": "2023-03-27T12:27:37.493000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Employee",
+            "database_id": 43,
+            "create_date": "2023-04-20T11:19:47.240000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "ErrorMsgs",
+            "database_id": 12,
+            "create_date": "2023-03-27T12:29:32.420000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Faculty",
+            "database_id": 13,
+            "create_date": "2023-03-27T12:31:31.100000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "FMS_API",
+            "database_id": 66,
+            "create_date": "2025-11-17T09:30:18.647000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Function",
+            "database_id": 35,
+            "create_date": "2023-03-28T08:45:34.760000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Gender",
+            "database_id": 14,
+            "create_date": "2023-03-27T12:33:28.437000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Industry",
+            "database_id": 15,
+            "create_date": "2023-03-27T12:35:04.963000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Log",
+            "database_id": 36,
+            "create_date": "2023-03-28T08:56:55.830000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Log_Audit",
+            "database_id": 56,
+            "create_date": "2024-03-13T09:21:11.767000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Major_Subject",
+            "database_id": 16,
+            "create_date": "2023-03-27T12:38:06.410000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Marital_Status",
+            "database_id": 17,
+            "create_date": "2023-03-27T12:39:42.190000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Menu",
+            "database_id": 37,
+            "create_date": "2023-03-28T08:58:34.457000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Mobile",
+            "database_id": 18,
+            "create_date": "2023-03-27T12:41:28.777000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Nationality",
+            "database_id": 19,
+            "create_date": "2023-03-27T12:43:40.480000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "NewProject",
+            "database_id": 49,
+            "create_date": "2023-09-27T11:01:21.590000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Other_Income",
+            "database_id": 57,
+            "create_date": "2024-03-22T11:24:52.543000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Payment_Sequence",
+            "database_id": 20,
+            "create_date": "2023-03-27T12:52:52.143000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Person",
+            "database_id": 21,
+            "create_date": "2023-03-27T12:54:26.867000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Pipeline",
+            "database_id": 45,
+            "create_date": "2023-05-30T11:51:14.110000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "QR_Code",
+            "database_id": 50,
+            "create_date": "2023-10-03T18:26:43.480000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Religion",
+            "database_id": 22,
+            "create_date": "2023-03-27T12:55:37.880000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Candidate_Tag",
+            "database_id": 23,
+            "create_date": "2023-03-27T12:57:04.280000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Contract_Type",
+            "database_id": 59,
+            "create_date": "2024-08-23T09:09:43.950000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Document_Type",
+            "database_id": 68,
+            "create_date": "2025-12-03T09:40:49.867000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Job_Status",
+            "database_id": 24,
+            "create_date": "2023-03-27T12:58:45.413000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Job_Type",
+            "database_id": 25,
+            "create_date": "2023-03-27T13:00:52.333000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Leave_Day",
+            "database_id": 64,
+            "create_date": "2025-09-17T09:35:02.290000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Position",
+            "database_id": 26,
+            "create_date": "2023-03-27T13:02:30.090000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Position_Tag",
+            "database_id": 27,
+            "create_date": "2023-03-27T13:04:05.777000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Reason_Drop",
+            "database_id": 28,
+            "create_date": "2023-03-27T13:05:39.830000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Specialize",
+            "database_id": 67,
+            "create_date": "2025-12-02T16:30:18.343000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Type_for_Work",
+            "database_id": 60,
+            "create_date": "2024-08-27T16:46:38.683000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_Type_Requirement",
+            "database_id": 29,
+            "create_date": "2023-03-27T13:07:13.367000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "RMS_WorkingTime",
+            "database_id": 62,
+            "create_date": "2024-09-16T12:13:07.530000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Role",
+            "database_id": 38,
+            "create_date": "2023-03-28T08:58:49.837000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Skill",
+            "database_id": 30,
+            "create_date": "2023-03-27T13:08:43.987000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Social_Media",
+            "database_id": 31,
+            "create_date": "2023-03-27T13:13:03.847000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Software",
+            "database_id": 39,
+            "create_date": "2023-03-28T08:59:05.210000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Tel_Country",
+            "database_id": 32,
+            "create_date": "2023-03-27T13:14:37.813000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Terminate_Status",
+            "database_id": 47,
+            "create_date": "2023-08-04T15:14:28.133000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Title",
+            "database_id": 33,
+            "create_date": "2023-03-27T13:15:57.787000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Training",
+            "database_id": 46,
+            "create_date": "2023-07-10T14:22:11.510000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "User_Login",
+            "database_id": 40,
+            "create_date": "2023-03-28T08:59:15.830000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "Week_Days",
+            "database_id": 58,
+            "create_date": "2024-05-29T09:34:47.627000",
+            "collation_name": "SQL_Latin1_General_CP1_CI_AS",
+            "compatibility_level": 140,
+            "state": "ONLINE",
+            "recovery_model": "FULL",
+            "user_access": "MULTI_USER"
+        },
+        {
+            "database_name": "xmloutv3uat",
+            "database_id": 44,
+            "create_date": "2023-05-08T16:17:03.747000",
+            "collation_name": "Latin1_General_CI_AI",
+            "compatibility_level": 110,
+            "state": "ONLINE",
+            "recovery_model": "SIMPLE",
+            "user_access": "MULTI_USER"
+        }
+    ]
+}

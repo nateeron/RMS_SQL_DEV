@@ -1,0 +1,296 @@
+{
+    "database_name": "Contact",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:28.780141",
+    "total_tables": 3,
+    "schema": {
+        "dbo.Contact": {
+            "schema": "dbo",
+            "table_name": "Contact",
+            "columns": [
+                {
+                    "column_name": "Contact_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Title_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "First_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Middle_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Last_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Email",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Position_ID",
+                    "data_type": "int",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 12,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Update_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 13,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Department_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 14,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Position_By_Comp_ID",
+                    "data_type": "int",
+                    "ordinal_position": 15,
+                    "is_nullable": "YES",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 16,
+                    "is_nullable": "YES",
+                    "column_default": "((1))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Delete",
+                    "data_type": "int",
+                    "ordinal_position": 17,
+                    "is_nullable": "YES",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        },
+        "dbo.Contact_Category_Type": {
+            "schema": "dbo",
+            "table_name": "Contact_Category_Type",
+            "columns": [
+                {
+                    "column_name": "Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Category_Name",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 512
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Update_By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Update_Date",
+                    "data_type": "smalldatetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Map_Contact": {
+            "schema": "dbo",
+            "table_name": "Map_Contact",
+            "columns": [
+                {
+                    "column_name": "Map_Contact_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Contact_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Reference_ID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Contact_Category_Type_ID",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated_By",
+                    "data_type": "int",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated_Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        }
+    }
+}

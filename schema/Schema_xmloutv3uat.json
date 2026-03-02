@@ -1,0 +1,855 @@
+{
+    "database_name": "xmloutv3uat",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:34.203125",
+    "total_tables": 10,
+    "schema": {
+        "xmlout.Client": {
+            "schema": "xmlout",
+            "table_name": "Client",
+            "columns": [
+                {
+                    "column_name": "ClientCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "Description",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 300
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": "((1))"
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.ClientConection": {
+            "schema": "xmlout",
+            "table_name": "ClientConection",
+            "columns": [
+                {
+                    "column_name": "Username",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "Password",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 70
+                },
+                {
+                    "column_name": "ClientCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "SupplierCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "Hotel",
+                    "data_type": "bit",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "((0))"
+                },
+                {
+                    "column_name": "Tour",
+                    "data_type": "bit",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "((0))"
+                },
+                {
+                    "column_name": "Transfer",
+                    "data_type": "bit",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "((0))"
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 10,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 11,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 12,
+                    "is_nullable": "NO",
+                    "column_default": "((1))"
+                },
+                {
+                    "column_name": "Remark",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 13,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                }
+            ]
+        },
+        "xmlout.ClientConfiguration": {
+            "schema": "xmlout",
+            "table_name": "ClientConfiguration",
+            "columns": [
+                {
+                    "column_name": "ClientCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "ConstantName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 200
+                },
+                {
+                    "column_name": "ConstantValue",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "Description",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.DestinationFiltering": {
+            "schema": "xmlout",
+            "table_name": "DestinationFiltering",
+            "columns": [
+                {
+                    "column_name": "Id",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ClientCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "SupplierCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "CountryCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 3
+                },
+                {
+                    "column_name": "CityCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "ProductType",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "AllowOnly",
+                    "data_type": "bit",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": "((0))"
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": "((1))"
+                },
+                {
+                    "column_name": "Remark",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                }
+            ]
+        },
+        "xmlout.PnrInfo": {
+            "schema": "xmlout",
+            "table_name": "PnrInfo",
+            "columns": [
+                {
+                    "column_name": "ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "SessionId",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "UserName",
+                    "data_type": "nchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "AgentCode",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "PnrNumber",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "LegId",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Leg_Status",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "LeadingGuest",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 300
+                },
+                {
+                    "column_name": "ClientCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "SupplierCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "ConfirmationCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 70
+                },
+                {
+                    "column_name": "AgentReference",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 12,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "XMLSUPPLIER_SESSIONID",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 13,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "XML_SUPPLIER_CODE",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 14,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "CurrencyCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 15,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 5
+                },
+                {
+                    "column_name": "TotalPrice",
+                    "data_type": "decimal",
+                    "ordinal_position": 16,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 18,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ServiceId",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 17,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "ProductId",
+                    "data_type": "int",
+                    "ordinal_position": 18,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ErrorMsg",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 19,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 800
+                },
+                {
+                    "column_name": "Date_Create",
+                    "data_type": "datetime",
+                    "ordinal_position": 20,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "Date_Update",
+                    "data_type": "datetime",
+                    "ordinal_position": 21,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                }
+            ]
+        },
+        "xmlout.SpecificConfiguration": {
+            "schema": "xmlout",
+            "table_name": "SpecificConfiguration",
+            "columns": [
+                {
+                    "column_name": "Username",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "SupplierCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "ConstantName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 200
+                },
+                {
+                    "column_name": "ConstantValue",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "Description",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.Supplier": {
+            "schema": "xmlout",
+            "table_name": "Supplier",
+            "columns": [
+                {
+                    "column_name": "SupplierCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "Description",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 300
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": "((1))"
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.SupplierConfiguration": {
+            "schema": "xmlout",
+            "table_name": "SupplierConfiguration",
+            "columns": [
+                {
+                    "column_name": "ConstantName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 200
+                },
+                {
+                    "column_name": "ConstantValue",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "Description",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.SystemKey": {
+            "schema": "xmlout",
+            "table_name": "SystemKey",
+            "columns": [
+                {
+                    "column_name": "TableName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "Prefix",
+                    "data_type": "varchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 10
+                },
+                {
+                    "column_name": "Running",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "(N'XML TEAM')",
+                    "max_length": 20
+                }
+            ]
+        },
+        "xmlout.XmlSupplier": {
+            "schema": "xmlout",
+            "table_name": "XmlSupplier",
+            "columns": [
+                {
+                    "column_name": "ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "XML_SUPPLIER_CODE",
+                    "data_type": "varchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "SUPPLIER_CODE",
+                    "data_type": "varchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "USER_NAME",
+                    "data_type": "varchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "HOTEL",
+                    "data_type": "int",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "TOUR",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "NO",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "TRANSFER",
+                    "data_type": "int",
+                    "ordinal_position": 7,
+                    "is_nullable": "NO",
+                    "column_default": "((0))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "USER_CREATE",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": "(N'xml')",
+                    "max_length": 50
+                },
+                {
+                    "column_name": "DATE_CREATE",
+                    "data_type": "datetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "USER_UPDATE",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": "(N'xml')",
+                    "max_length": 50
+                },
+                {
+                    "column_name": "DATE_UPDATE",
+                    "data_type": "datetime",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "ACTIVE",
+                    "data_type": "int",
+                    "ordinal_position": 12,
+                    "is_nullable": "NO",
+                    "column_default": "((1))",
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        }
+    }
+}

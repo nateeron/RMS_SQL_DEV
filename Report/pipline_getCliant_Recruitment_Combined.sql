@@ -1,22 +1,15 @@
 USE [Pipeline]
 GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-/****** Object:  StoredProcedure [dbo].[sp_Get_Report_ClientProjectPosition_PositionOnly]    Script Date: 12/17/2025 ******/
--- Procedure name: [dbo].[sp_Get_Report_ClientProjectPosition_PositionOnly]
--- Description   : Returns Position_Name and Project_Position_ID using the combined Client/Project/Position logic
--- Example       : EXEC [dbo].[sp_Get_Report_ClientProjectPosition_PositionOnly] 3357, '3,42,1063', '2025-09-28', '2025-10-28', '', '', '';
-CREATE OR ALTER PROCEDURE [dbo].[sp_Get_Report_ClientProjectPosition_PositionOnly] 
-	@Company_ID INT = 0,
+
+DECLARE @Company_ID INT = 3357,
 	@Role_ID NVARCHAR(100) = NULL,
 	@DateFromStr	VARCHAR(30) = NULL,
     @DateToStr		VARCHAR(30) = NULL,
-	@Owner_Name		NVARCHAR(100) = '', 
-	@Client_Name	NVARCHAR(100) = '', 	
-	@Position_Name  NVARCHAR(100) = ''
-AS
+	@Owner_ID_str		NVARCHAR(500) = '', 
+	@Client_ID_str	NVARCHAR(500) = '', 	
+	@Position_ID_str  NVARCHAR(500) = '';
+
+
 DECLARE @COMPANY_TYPE_ID INT = 0,
 	@Address_Type_ID INT = 0,
 	@Category_Type_ID INT = 0,
@@ -24,10 +17,11 @@ DECLARE @COMPANY_TYPE_ID INT = 0,
 	@Count_View_Location INT = 0,
 	@Count_View_Project INT = 0;
 
-BEGIN TRY
+
 	DECLARE @DateFrom DATETIME = NULL;
     DECLARE @DateTo   DATETIME = NULL;
 
+    -- แปลง string → DATETIME
     SET @DateFrom = TRY_CONVERT(DATETIME, NULLIF(@DateFromStr, ''));
     SET @DateTo   = TRY_CONVERT(DATETIME, NULLIF(@DateToStr, ''));
 
@@ -81,8 +75,15 @@ BEGIN
 							AND [MRF].[Is_Active] = 1);
 END
 
+-- Pipeline Type (from sp_Get_Report_Recruitment_Process_ByRecruiters.sql)
+DECLARE @Pipeline_Type_ID INT = 0;
+SELECT TOP 1 @Pipeline_Type_ID = PT.Pipeline_Type_ID
+FROM dbo.Pipeline_Type PT
+WHERE PT.Pipeline_Type_Name = 'System';
+
 BEGIN
 	WITH AllData AS (
+	-- MAP
     SELECT
         m.Map_Can_Pile_Com_ID,
         m.Candidate_ID,
@@ -109,13 +110,14 @@ BEGIN
 
     UNION ALL
 
+    -- HISTORY
     SELECT
         h.Map_Can_Pile_Com_ID,
         h.Candidate_ID,
         h.Project_Position_ID,
         h.Pipeline_ID,
         h.Company_ID,
-        h.Created_Date_His AS Created_Date,
+        h.Created_Date,
         'HISTORY' AS SourceType
     FROM [Pipeline].[dbo].[His_Can_Pile_Com] h
     WHERE 
@@ -142,12 +144,98 @@ BEGIN
             ORDER BY Created_Date DESC
         ) AS rn
     FROM AllData 
-	),ID_Position AS (
-			SELECT  Project_Position_ID
-			FROM Ranked
-			WHERE rn = 1
-			Group by Project_Position_ID
-	),MBP_MapBranchProject AS (
+	),
+	ID_Position AS (
+		SELECT  Project_Position_ID
+		FROM Ranked
+		WHERE rn = 1
+		Group by Project_Position_ID
+	),
+	-- Pipelines list (from sp_Get_Report_Recruitment_Process_ByRecruiters.sql)
+	PipelinesList AS (
+		SELECT
+			P.Pipeline_ID,
+			P.Pipeline_Name,
+			P.Number_Step AS Priority
+		FROM dbo.Pipeline P
+		WHERE
+		(
+			P.Pipeline_Type_ID = @Pipeline_Type_ID
+			OR (P.Pipeline_Type_ID <> @Pipeline_Type_ID AND P.Company_ID = @Company_ID)
+		)
+		AND P.Is_Active = 1
+		AND P.Is_Delete = 0
+	),
+	-- Latest Pipeline Data with Owner (from sp_Get_Report_Recruitment_Process_ByRecruiters.sql logic)
+	LatestPipelineData AS (
+		SELECT
+			MC.Map_Can_Pile_Com_ID,
+			MC.Candidate_ID,
+			MC.Project_Position_ID,
+			MC.Pipeline_ID,
+			MC.Company_ID,
+			MC.Created_Date,
+			MC.SourceType,
+			LUC.Owner_ID,
+			CONCAT(
+				LTRIM(RTRIM(T_Own.Title_Name)), ' ', Own.Full_Name
+			) AS Owner_Name
+		FROM Ranked MC
+		LEFT JOIN [Candidate].[dbo].[Candidate] C 
+			   ON C.Candidate_ID = MC.Candidate_ID
+			  AND C.Is_Deleted = 0
+		LEFT JOIN (
+			SELECT
+				tt.Update_By AS Owner_ID,
+				tt.Candidate_ID
+			FROM [Candidate].[dbo].[Log_Update_Candidate] tt
+			INNER JOIN (
+				SELECT
+					ss.Candidate_ID,
+					MAX(ss.Update_Date) AS MaxDateTime
+				FROM [Candidate].[dbo].[Log_Update_Candidate] ss
+				WHERE ss.Is_Employee = 0
+				  AND ss.Is_Terminate = 0
+				GROUP BY ss.Candidate_ID
+			) groupedtt
+				ON tt.Candidate_ID = groupedtt.Candidate_ID
+			   AND tt.Update_Date = groupedtt.MaxDateTime
+			   AND tt.Is_Employee = 0
+			   AND tt.Is_Terminate = 0
+		) LUC ON LUC.Candidate_ID = C.Candidate_ID
+		LEFT JOIN [Person].[dbo].[Person] Own 
+			   ON Own.Person_ID = LUC.Owner_ID
+		LEFT JOIN [Title].[dbo].[Title] T_Own 
+			   ON T_Own.Title_ID = Own.Title_ID
+		WHERE MC.rn = 1
+			AND (
+				@Owner_ID_str IS NULL
+				OR @Owner_ID_str = ''
+				OR LTRIM(RTRIM(@Owner_ID_str)) = ''
+				OR LUC.Owner_ID IN (
+					SELECT CAST(LTRIM(RTRIM(value)) AS INT)
+					FROM STRING_SPLIT(@Owner_ID_str, ',')
+					WHERE LTRIM(RTRIM(value)) <> ''
+					  AND ISNUMERIC(LTRIM(RTRIM(value))) = 1
+				)
+			)
+	),
+	-- Pipeline Counts by Project_Position_ID (group by Project_Position_ID instead of Owner_Name)
+	PipelineCounts AS (
+		SELECT
+			LPD.Project_Position_ID,
+			PL.Pipeline_ID,
+			PL.Pipeline_Name,
+			PL.Priority,
+			COUNT(*) AS Pipeline_Count,
+			-- Create sequential row number based on Priority order (1,2,3... instead of 99,135,1125...)
+			ROW_NUMBER() OVER (PARTITION BY LPD.Project_Position_ID ORDER BY PL.Priority) AS RowNum
+		FROM LatestPipelineData LPD
+		INNER JOIN PipelinesList PL ON PL.Pipeline_ID = LPD.Pipeline_ID
+		WHERE LPD.Owner_Name IS NOT NULL
+		GROUP BY LPD.Project_Position_ID, PL.Pipeline_ID, PL.Pipeline_Name, PL.Priority
+	),
+	MBP_MapBranchProject AS (
 		SELECT [Branch_ID_Of_Project] = [B].[Branch_ID],
 			[Branch_Name_Of_Project] = [B].[Branch_Name],
 			[Comp_Branch_Project] = [MCB].[Company_ID],
@@ -297,6 +385,7 @@ BEGIN
 		WHERE [MPP].[Is_Active] = 1
 			AND [MPP].[Is_Delete] = 0
 	),
+	-- Get Client List from sp_GetList_Com_Client logic
 	Client_List AS (
 		SELECT [COMP].[Company_ID] AS [Client_ID],
 			[COMP].[Company_Name] AS [Client_Name]
@@ -306,16 +395,23 @@ BEGIN
 			AND [COMP].[Is_Active] = 1
 			AND [COMP].[Is_Delete] = 0
 	),
+	-- Get Project Position details (from sp_GetProjectPosition_By_PCID logic)
 	PP_ProjectPosition AS (
 		SELECT 
 			COM.Company_ID AS Client_ID,
 			PP.Project_Position_ID,
+			PP.Position_ID AS Position_ID_OF_Com,
+			PP.Position_By_Comp_ID,
+			[P].[Position_ID],
 			CASE WHEN [P].[Position_Name] IS NOT NULL THEN [P].[Position_Name] ELSE '-' END AS Position_Name,
-			CASE WHEN [MUP].[Owner_Name] IS NOT NULL THEN [MUP].[Owner_Name] ELSE '-' END AS Owner_Name
+			CASE WHEN [MUP].[Owner_Name] IS NOT NULL THEN [MUP].[Owner_Name] ELSE '-' END AS Owner_Name,
+			[MUP].[Person_ID] AS Owner_Person_ID
+			,PP.Job_Req_Date
 		FROM Company.dbo.Project_Position PP
 			LEFT JOIN (
 				SELECT [MUP].[Project_Position_ID],
 					[Owner_Name] = [P].[Full_Name],
+					[MUP].[Person_ID],
 					[MUP].[Is_Active]
 				FROM [Company].[dbo].[Map_User_PrjPosi] MUP
 					LEFT JOIN [Person].[dbo].[Person] P ON [P].[Person_ID] = [MUP].[Person_ID]
@@ -373,10 +469,12 @@ BEGIN
 				OR [MSP].[Comp_Site] = COM.Company_ID
 				OR [MBP].[Comp_Branch] = COM.Company_ID
 			)
+			-- Apply Role-based filtering (matching sp_GetProjectPosition_By_PCID logic exactly)
 			AND (
 				@Role_ID IS NULL 
 				OR @Role_ID = ''
 				OR (
+					-- Match all 7 combinations from sp_GetProjectPosition_By_PCID
 					(@Count_View_Branch = 0 AND @Count_View_Location <> 0 AND @Count_View_Project <> 0 AND [MPP].[Branch_ID] IS NULL AND [MSP].[Branch_ID] IS NULL AND [MBP].[Branch_ID] IS NULL)
 					OR (@Count_View_Branch <> 0 AND @Count_View_Location = 0 AND @Count_View_Project <> 0 AND [MPP].[Site_ID] IS NULL AND [MSP].[Site_ID] IS NULL)
 					OR (@Count_View_Branch <> 0 AND @Count_View_Location <> 0 AND @Count_View_Project = 0 AND [MPP].[Project_Client_ID] IS NULL)
@@ -387,43 +485,150 @@ BEGIN
 					OR (@Count_View_Branch <> 0 AND @Count_View_Location <> 0 AND @Count_View_Project <> 0)
 				)
 			)
+	),
+	-- CTE: Split Owner Name/ID values
+	OwnerFilter AS (
+		SELECT LTRIM(RTRIM([value])) AS [Owner_Value]
+		FROM STRING_SPLIT(@Owner_ID_str, ',')
+		WHERE @Owner_ID_str <> '' AND @Owner_ID_str IS NOT NULL
+	),
+	-- CTE: Split Client Name/ID values
+	ClientFilter AS (
+		SELECT LTRIM(RTRIM([value])) AS [Client_Value]
+		FROM STRING_SPLIT(@Client_ID_str, ',')
+		WHERE @Client_ID_str <> '' AND @Client_ID_str IS NOT NULL
+	),
+	-- CTE: Split Position ID values
+	PositionFilter AS (
+		SELECT TRY_CAST(LTRIM(RTRIM([value])) AS INT) AS [Position_ID_Value]
+		FROM STRING_SPLIT(@Position_ID_str, ',')
+		WHERE @Position_ID_str <> '' AND @Position_ID_str IS NOT NULL
+			AND TRY_CAST(LTRIM(RTRIM([value])) AS INT) IS NOT NULL
+	),
+	-- Aggregate Pipeline Counts by Project_Position_ID (simplified - showing individual pipeline counts)
+	PipelineCountsAggregated AS (
+		SELECT
+			PC.Project_Position_ID,
+			-- Create individual columns for top pipelines (up to 10 pipelines) using RowNum instead of Priority
+			MAX(CASE WHEN PC.RowNum = 1 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_1,
+			MAX(CASE WHEN PC.RowNum = 1 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_1,
+			MAX(CASE WHEN PC.RowNum = 2 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_2,
+			MAX(CASE WHEN PC.RowNum = 2 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_2,
+			MAX(CASE WHEN PC.RowNum = 3 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_3,
+			MAX(CASE WHEN PC.RowNum = 3 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_3,
+			MAX(CASE WHEN PC.RowNum = 4 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_4,
+			MAX(CASE WHEN PC.RowNum = 4 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_4,
+			MAX(CASE WHEN PC.RowNum = 5 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_5,
+			MAX(CASE WHEN PC.RowNum = 5 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_5,
+			MAX(CASE WHEN PC.RowNum = 6 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_6,
+			MAX(CASE WHEN PC.RowNum = 6 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_6,
+			MAX(CASE WHEN PC.RowNum = 7 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_7,
+			MAX(CASE WHEN PC.RowNum = 7 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_7,
+			MAX(CASE WHEN PC.RowNum = 8 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_8,
+			MAX(CASE WHEN PC.RowNum = 8 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_8,
+			MAX(CASE WHEN PC.RowNum = 9 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_9,
+			MAX(CASE WHEN PC.RowNum = 9 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_9,
+			MAX(CASE WHEN PC.RowNum = 10 THEN PC.Pipeline_Count ELSE 0 END) AS Pipeline_Count_10,
+			MAX(CASE WHEN PC.RowNum = 10 THEN PC.Pipeline_Name ELSE NULL END) AS Pipeline_Name_10,
+			-- Total count across all pipelines
+			SUM(PC.Pipeline_Count) AS Total_All_Pipelines
+		FROM PipelineCounts PC
+		GROUP BY PC.Project_Position_ID
+	),
+	-- JSON column with all pipeline details (separated to avoid aggregate function error)
+	PipelineCountsJSON AS (
+		SELECT
+			PCA.Project_Position_ID,
+			(
+				SELECT 
+					PL.Pipeline_ID AS PipelineID,
+					PL.Pipeline_Name AS PipelineName,
+					PL.Priority,
+					ISNULL(PC.Pipeline_Count, 0) AS Count
+				FROM PipelinesList PL
+				LEFT JOIN PipelineCounts PC ON PC.Pipeline_ID = PL.Pipeline_ID AND PC.Project_Position_ID = PCA.Project_Position_ID
+				ORDER BY PL.Priority
+				FOR JSON PATH
+			) AS Pipeline_Counts_JSON
+		FROM PipelineCountsAggregated PCA
 	)
+	-- Combined Result
 	SELECT 
+		CL.Client_ID,
+		[PP].[Owner_Person_ID],
+		PP.Owner_Name,
+		CL.Client_Name,
+		PP.Position_ID,
 		PP.Position_Name,
-		PP.Project_Position_ID
+		PP.Project_Position_ID,
+		pp.Job_Req_Date,
+		-- Pipeline Counts from sp_Get_Report_Recruitment_Process_ByRecruiters.sql (group by Project_Position_ID)
+		ISNULL(PCA.Pipeline_Count_1, 0) AS Pipeline_Count_1,
+		PCA.Pipeline_Name_1,
+		ISNULL(PCA.Pipeline_Count_2, 0) AS Pipeline_Count_2,
+		PCA.Pipeline_Name_2,
+		ISNULL(PCA.Pipeline_Count_3, 0) AS Pipeline_Count_3,
+		PCA.Pipeline_Name_3,
+		ISNULL(PCA.Pipeline_Count_4, 0) AS Pipeline_Count_4,
+		PCA.Pipeline_Name_4,
+		ISNULL(PCA.Pipeline_Count_5, 0) AS Pipeline_Count_5,
+		PCA.Pipeline_Name_5,
+		ISNULL(PCA.Pipeline_Count_6, 0) AS Pipeline_Count_6,
+		PCA.Pipeline_Name_6,
+		ISNULL(PCA.Pipeline_Count_7, 0) AS Pipeline_Count_7,
+		PCA.Pipeline_Name_7,
+		ISNULL(PCA.Pipeline_Count_8, 0) AS Pipeline_Count_8,
+		PCA.Pipeline_Name_8,
+		ISNULL(PCA.Pipeline_Count_9, 0) AS Pipeline_Count_9,
+		PCA.Pipeline_Name_9,
+		ISNULL(PCA.Pipeline_Count_10, 0) AS Pipeline_Count_10,
+		PCA.Pipeline_Name_10,
+		ISNULL(PCA.Total_All_Pipelines, 0) AS Total_All_Pipelines,
+		PCJ.Pipeline_Counts_JSON
 	FROM Client_List CL
 		INNER JOIN PP_ProjectPosition PP ON PP.Client_ID = CL.Client_ID
-		INNER JOIN ID_Position IP ON IP.Project_Position_ID = PP.Project_Position_ID
-	Where  PP.Owner_Name	 Like  '%'+@Owner_Name	+'%'
-	AND CL.Client_Name   Like	'%'+@Client_Name+'%'
-	AND PP.Position_Name Like	'%'+@Position_Name+'%'
+		Left JOIN ID_Position IP ON IP.Project_Position_ID = PP.Project_Position_ID
+		LEFT JOIN PipelineCountsAggregated PCA ON PCA.Project_Position_ID = PP.Project_Position_ID
+		LEFT JOIN PipelineCountsJSON PCJ ON PCJ.Project_Position_ID = PP.Project_Position_ID
+	WHERE 
+		-- Filter by Owner Name/ID (if provided) - supports multiple values, handles both IDs and names
+		(@Owner_ID_str = '' OR @Owner_ID_str IS NULL OR 
+			EXISTS (
+				SELECT 1 FROM OwnerFilter OFilt
+				WHERE (TRY_CAST(OFilt.[Owner_Value] AS INT) IS NOT NULL AND [PP].[Owner_Person_ID] = TRY_CAST(OFilt.[Owner_Value] AS INT))
+					OR (TRY_CAST(OFilt.[Owner_Value] AS INT) IS NULL AND [PP].[Owner_Name] = OFilt.[Owner_Value])
+			)
+		)
+		-- Filter by Client Name/ID (if provided) - supports multiple values, handles both IDs and names
+		AND (@Client_ID_str = '' OR @Client_ID_str IS NULL OR 
+			EXISTS (
+				SELECT 1 FROM ClientFilter CF
+				WHERE (TRY_CAST(CF.[Client_Value] AS INT) IS NOT NULL AND [CL].[Client_ID] = TRY_CAST(CF.[Client_Value] AS INT))
+					OR (TRY_CAST(CF.[Client_Value] AS INT) IS NULL AND [CL].[Client_Name] = CF.[Client_Value])
+			)
+		)
+		-- Filter by Position ID (if provided) - supports multiple IDs
+		-- If Position_ID_OF_Com != 0, filter by Position_ID_OF_Com, otherwise filter by resolved Position_ID
+		AND (@Position_ID_str = '' OR @Position_ID_str IS NULL OR 
+			(
+				([PP].[Position_ID_OF_Com] != 0 AND [PP].[Position_ID_OF_Com] IS NOT NULL 
+				 AND [PP].[Position_ID_OF_Com] IN (SELECT [Position_ID_Value] FROM PositionFilter))
+				OR
+				(([PP].[Position_ID_OF_Com] = 0 OR [PP].[Position_ID_OF_Com] IS NULL) 
+				 AND [PP].[Position_ID] IN (SELECT [Position_ID_Value] FROM PositionFilter))
+			)
+		)AND (
+               ( @DateFrom IS NULL AND @DateTo IS NULL )
+            OR ( @DateFrom IS NOT NULL AND @DateTo IS NULL
+                 AND pp.Job_Req_Date >= @DateFrom )
+            OR ( @DateFrom IS NULL AND @DateTo IS NOT NULL
+                 AND pp.Job_Req_Date < DATEADD(DAY, 1, @DateTo) )
+            OR ( @DateFrom IS NOT NULL AND @DateTo IS NOT NULL
+                 AND pp.Job_Req_Date >= @DateFrom
+                 AND pp.Job_Req_Date < DATEADD(DAY, 1, @DateTo) )
+        )
 
-	ORDER BY PP.Position_Name, PP.Project_Position_ID;
+	ORDER BY PP.Owner_Name, CL.Client_Name, PP.Project_Position_ID;
+
 
 END
-END TRY 
-
-BEGIN CATCH 
-	INSERT INTO [LOG].[dbo].[Log] (
-		[Software_ID],
-		[Function_Name],
-		[Detail],
-		[Created By],
-		[Created Date]
-	)
-	VALUES (
-		'1',
-		'DB Company - sp_Get_Report_ClientProjectPosition_PositionOnly',
-		ERROR_MESSAGE(),
-		999,
-		GETDATE()
-	);
-END CATCH
-GO
-
-
-
-
-
-
-

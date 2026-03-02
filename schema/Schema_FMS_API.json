@@ -1,0 +1,540 @@
+{
+    "database_name": "FMS_API",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:29.592140",
+    "total_tables": 7,
+    "schema": {
+        "dbo.Expertise_Master": {
+            "schema": "dbo",
+            "table_name": "Expertise_Master",
+            "columns": [
+                {
+                    "column_name": "ExpertiseID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ExpertiseName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "max_length": 200
+                },
+                {
+                    "column_name": "DisplayOrder",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": "((1))",
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": "((1))"
+                }
+            ]
+        },
+        "dbo.Map_User_Company": {
+            "schema": "dbo",
+            "table_name": "Map_User_Company",
+            "columns": [
+                {
+                    "column_name": "UserID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Company_ID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Is_Active",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created By",
+                    "data_type": "int",
+                    "ordinal_position": 4,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Created Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 5,
+                    "is_nullable": "NO",
+                    "column_default": null
+                },
+                {
+                    "column_name": "Updated By",
+                    "data_type": "int",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "Updated Date",
+                    "data_type": "datetime",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null
+                }
+            ]
+        },
+        "dbo.Recruiter_Consent_Log": {
+            "schema": "dbo",
+            "table_name": "Recruiter_Consent_Log",
+            "columns": [
+                {
+                    "column_name": "ConsentID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "UserID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "TermsID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "AcceptTerms",
+                    "data_type": "bit",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "AcceptPrivacy",
+                    "data_type": "bit",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "IpAddress",
+                    "data_type": "varchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "UserAgent",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "AcceptedDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": "(getdate())"
+                }
+            ]
+        },
+        "dbo.Recruiter_Expertise": {
+            "schema": "dbo",
+            "table_name": "Recruiter_Expertise",
+            "columns": [
+                {
+                    "column_name": "UserID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "ExpertiseID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "OtherExpertise",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 200
+                }
+            ]
+        },
+        "dbo.Registration": {
+            "schema": "dbo",
+            "table_name": "Registration",
+            "columns": [
+                {
+                    "column_name": "UserID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "UserPassword",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "UserLogin",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "IsDelete",
+                    "data_type": "bit",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "ResetToken",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "Token_version",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 20
+                }
+            ]
+        },
+        "dbo.Terms_Master": {
+            "schema": "dbo",
+            "table_name": "Terms_Master",
+            "columns": [
+                {
+                    "column_name": "TermsID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "TermsType",
+                    "data_type": "varchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "VersionNo",
+                    "data_type": "varchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 10
+                },
+                {
+                    "column_name": "Title",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 200
+                },
+                {
+                    "column_name": "Content",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": -1
+                },
+                {
+                    "column_name": "PrivacyContent",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": -1
+                },
+                {
+                    "column_name": "LanguageCode",
+                    "data_type": "varchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 10
+                },
+                {
+                    "column_name": "IsActive",
+                    "data_type": "bit",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": "((1))"
+                },
+                {
+                    "column_name": "CreatedDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": "(getdate())"
+                },
+                {
+                    "column_name": "CreatedBy",
+                    "data_type": "varchar",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                }
+            ]
+        },
+        "dbo.UserProfile": {
+            "schema": "dbo",
+            "table_name": "UserProfile",
+            "columns": [
+                {
+                    "column_name": "UserProfileID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "UserLoginID",
+                    "data_type": "int",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "FirstName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "LastName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 4,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "Email",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 5,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "Phone",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 6,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 20
+                },
+                {
+                    "column_name": "Nationality",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 7,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "PathImage",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 8,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "Country",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 9,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "City",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 10,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 100
+                },
+                {
+                    "column_name": "Preferren",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 11,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "BankAccount",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 12,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "BankName",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 13,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "SWIFTCode",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 14,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 255
+                },
+                {
+                    "column_name": "CreateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 15,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "UpdateDate",
+                    "data_type": "datetime",
+                    "ordinal_position": 16,
+                    "is_nullable": "YES",
+                    "column_default": null
+                },
+                {
+                    "column_name": "CreateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 17,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                },
+                {
+                    "column_name": "UpdateBy",
+                    "data_type": "nvarchar",
+                    "ordinal_position": 18,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 50
+                }
+            ]
+        }
+    }
+}

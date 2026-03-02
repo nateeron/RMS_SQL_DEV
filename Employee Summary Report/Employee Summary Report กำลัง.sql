@@ -1,0 +1,330 @@
+DECLARE @Status_ID INT = 0,
+        @Company_ID INT = 1,
+
+		  @TYPE_SYSTEM_ID INT,
+    @TYPE_TEMP_ID INT,
+    @Company_Parent_ID INT;
+
+SELECT TOP 1 
+    @Status_ID = SCE.Status_Contract_EMP_ID
+FROM [Employee].[dbo].[Status_Contract_EMP] SCE
+WHERE SCE.Status_Contract_EMP_Name = 'New';
+
+-- ===== Get Type IDs =====
+SELECT 
+    @TYPE_SYSTEM_ID = MAX(CASE WHEN Contract_Type_By_Comp_Type_Name = 'System'  THEN Contract_Type_By_Comp_Type_ID END),
+    @TYPE_TEMP_ID   = MAX(CASE WHEN Contract_Type_By_Comp_Type_Name = 'Company' THEN Contract_Type_By_Comp_Type_ID END)
+FROM [RMS_Contract_Type].dbo.Contract_Type_By_Comp_Type;
+
+-- ===== Get Parent Company =====
+SELECT 
+    @Company_Parent_ID = ISNULL(Company_Parent_ID, 0)
+FROM [Company].[dbo].[Company]
+WHERE Company_ID = @Company_ID;
+
+
+WITH Employee_info AS (
+    SELECT
+        EMP.Company_ID,
+        EMP.Employee_ID,
+        EMP.Candidate_ID,
+        EMP.Status_Employee,
+        EMP.Is_Active,
+        EMP.Is_Deleted,
+
+        -- Candidate
+        CAN.Person_ID,
+        TIT.Title_Name,
+        PER.Full_Name,
+
+        -- Contract (ล่าสุดต่อ Employee)
+        CE.Contract_Type_ID_OF_Com,
+		CE.DOJ AS Date_Of_Join,
+        CE.Start_Date,
+        CE.End_Date,
+        CE.Status_Contract_EMP_ID,
+        CE.Terminate_Date,
+        CE.Terminate_Status_ID,
+        CE.Terminate_Remark,
+        CE.Position_ID_OF_Com,
+        CE.Position_By_Com_ID,
+        CE.Project_Position_ID,
+        CE.Contract_EMP_ID,
+        CE.Contract_Type_By_Comp_ID,
+        CE.Created_By,
+        CE.Updated_By
+		
+    FROM [Employee].[dbo].[Employee] EMP
+
+    -- Candidate
+    LEFT JOIN [Candidate].[DBO].[Candidate] CAN
+        ON CAN.Candidate_ID = EMP.Candidate_ID
+    LEFT JOIN [Person].[DBO].[Person] PER
+        ON PER.Person_ID = CAN.Person_ID
+    LEFT JOIN [Title].[DBO].[Title] TIT
+        ON TIT.Title_ID = PER.Title_ID
+    -- Contract ล่าสุดของแต่ละ Employee
+    OUTER APPLY (
+        SELECT TOP 1 *
+        FROM [Employee].[dbo].[Contract_EMP] CE
+        WHERE CE.Employee_ID = EMP.Employee_ID
+        ORDER BY CE.Updated_Date DESC
+    ) CE
+	 --LEFT JOIN	 [Employee].[dbo].[Contact_Type] CT ON CT.Contact_Type_ID = CE.Contract_Type_ID_OF_Com
+
+    WHERE EMP.Company_ID = @Company_ID
+	), 
+		-- ===== Company Scope =====
+	CompanyScope AS (
+    SELECT Company_ID
+    FROM [Company].[dbo].[Company]
+    WHERE Company_ID = CASE WHEN @Company_Parent_ID = 0 THEN @Company_ID ELSE @Company_Parent_ID END
+       OR Company_Parent_ID = CASE WHEN @Company_Parent_ID = 0 THEN @Company_ID ELSE @Company_Parent_ID END
+	),
+	-- ===== Contract Types (System + Company) =====
+	ContractType AS (
+				SELECT 
+				    CTT.Contract_Type_Temp_ID AS Contract_Type_ID,
+				    CTT.Contract_Type_Temp_Name AS Contract_Type_Name,
+				    @TYPE_TEMP_ID AS Type_Contract,
+				    CTCT.Contract_Type_By_Comp_Type_Name
+				FROM [RMS_Contract_Type].dbo.Contract_Type_Temp CTT
+				JOIN CompanyScope CS ON CS.Company_ID = CTT.Company_ID
+				JOIN [RMS_Contract_Type].dbo.Contract_Type_By_Comp_Type CTCT 
+				    ON CTCT.Contract_Type_By_Comp_Type_ID = @TYPE_TEMP_ID
+				WHERE CTT.Is_Active = 1
+				  AND CTT.Is_Deleted = 0
+
+				UNION ALL
+
+				SELECT 
+				    CT.Contract_Type_ID,
+				    CT.Contract_Type_Name,
+				    @TYPE_SYSTEM_ID AS Type_Contract,
+				    CTCT.Contract_Type_By_Comp_Type_Name
+				FROM [RMS_Contract_Type].dbo.Contract_Type CT
+				JOIN [RMS_Contract_Type].dbo.Contract_Type_By_Comp_Type CTCT 
+				    ON CTCT.Contract_Type_By_Comp_Type_ID = @TYPE_SYSTEM_ID
+				WHERE CT.Is_Active = 1
+				  AND CT.Is_Deleted = 0
+
+	) ,Contract_Type AS(
+			
+			-- ===== Final Result =====
+			SELECT
+			    CTC.Contract_Type_By_Comp_ID,
+			    CT.Contract_Type_ID,
+			    CT.Contract_Type_Name,
+			    CT.Type_Contract,
+			    Is_Active = ISNULL(CTC.Is_Active, 0)
+			FROM ContractType CT
+			LEFT JOIN [RMS_Contract_Type].dbo.Contract_Type_By_Comp CTC
+			    ON CTC.Contract_Type_ID = CT.Contract_Type_ID
+			   AND CTC.Contract_Type_By_Comp_Type_ID = CT.Type_Contract
+			   AND CTC.Is_Deleted = 0
+			WHERE CTC.Company_ID IN (SELECT Company_ID FROM CompanyScope)
+			  AND ISNULL(CTC.Is_Active, 0) = 1
+	),-- CTE: Project Position details (simplified with COALESCE)
+	ProjectPositions AS (
+		SELECT 
+			[PP].[Project_Position_ID],
+			[Site_ID] = COALESCE([MPP].[Site_ID], [MSP].[Site_ID], 0),
+			[Branch_ID] = COALESCE([MPP].[Branch_ID], [MSP].[Branch_ID], [MBP].[Branch_ID], 0),
+			[Project_Client_ID] = COALESCE([MPP].[Project_Client_ID], 0),
+			[Company_ID] = [COM].[Company_ID],
+			[ComCliantName] = [COM].[Company_Name]
+		FROM [Company].[dbo].[Project_Position] PP
+		LEFT JOIN [Company].[dbo].[Map_Comp_Position] MCPP ON [MCPP].[Project_Position_ID] = [PP].[Project_Position_ID] 
+			AND [MCPP].[Is_Active] = 1 AND [MCPP].[Is_Delete] = 0
+		LEFT JOIN (
+			SELECT [MPP].[Project_Position_ID]
+					,[PC].[Project_Client_ID]
+					,[PC].[Project_Name]
+					,[PC].[Branch_ID]
+					,[PC].[Branch_Name]
+					,[PC].[Site_ID]
+					,[PC].[Site_Name]
+					,[PC].[Comp_Branch_Project]
+					,[PC].[Comp_Branch_Site_Project]
+					,[PC].[Comp_Project]
+					,[PC].[Comp_Site_Project]
+			FROM [Company].[dbo].[Map_Project_Position] MPP
+			LEFT JOIN (
+				SELECT [PC].[Project_Client_ID]
+						,[PC].[Project_Name]
+						,[Comp_Project] = [MCP].[Company_ID]
+						,[MBP].[Comp_Branch_Project]
+						,[MSP].[Comp_Branch_Site_Project]
+						,[MSP].[Comp_Site_Project]
+						,[MSP].[Site_ID]
+						,[MSP].[Site_Name]
+						,[Branch_ID] = COALESCE([MBP].[Branch_ID_Of_Project], [MSP].[Branch_ID_Of_Site_Project])
+						,[Branch_Name] = COALESCE([MBP].[Branch_Name_Of_Project], [MSP].[Branch_Name_Of_Site_Project])
+				FROM [Company].[dbo].[Project_Client] PC
+				LEFT JOIN [Company].[dbo].[Map_Comp_Project] MCP ON [MCP].[Project_Client_ID] = [PC].[Project_Client_ID] 
+					AND [MCP].[Is_Active] = 1 AND [MCP].[Is_Delete] = 0
+				LEFT JOIN (
+					SELECT [Branch_ID_Of_Project] = [B].[Branch_ID]
+							,[Branch_Name_Of_Project] = [B].[Branch_Name]
+							,[Comp_Branch_Project] = [MCB].[Company_ID]
+							,[MBP].[Project_Client_ID]
+					FROM [Company].[dbo].[Map_Branch_Project] MBP
+					LEFT JOIN [Company].[dbo].[Map_Comp_Branch] MCB ON [MCB].[Branch_ID] = [MBP].[Branch_ID] 
+						AND [MCB].[Is_Active] = 1 AND [MCB].[Is_Delete] = 0
+					LEFT JOIN [Company].[dbo].[Branch_By_Comp] B ON [B].[Branch_ID] = [MBP].[Branch_ID] 
+						AND [B].[Is_Active] = 1 AND [B].[Is_Delete] = 0
+					WHERE [MBP].[Is_Active] = 1 AND [MBP].[Is_Delete] = 0
+				) MBP ON [MBP].[Project_Client_ID] = [PC].[Project_Client_ID]
+				LEFT JOIN (
+					SELECT [MSP].[Project_Client_ID]
+							,[S].[Site_ID]
+							,[S].[Site_Name]
+							,[Branch_ID_Of_Site_Project] = [BS].[Branch_ID]
+							,[Branch_Name_Of_Site_Project] = [BS].[Branch_Name]
+							,[Comp_Site_Project] = [MCS].[Company_ID]
+							,[Comp_Branch_Site_Project] = [MCB].[Company_ID]
+					FROM [Company].[dbo].[Map_Site_Project] MSP
+					LEFT JOIN [Company].[dbo].[Map_Comp_Site] MCS ON [MCS].[Site_ID] = [MSP].[Site_ID] 
+						AND [MSP].[Is_Active] = 1 AND [MSP].[Is_Delete] = 0
+					LEFT JOIN [Company].[dbo].[Site] S ON [S].[Site_ID] = [MSP].[Site_ID] AND [S].[Is_Active] = 1
+					LEFT JOIN [Company].[dbo].[Map_Branch_Site] MBS ON [MBS].[Site_ID] = [MSP].[Site_ID] 
+						AND [MBS].[Is_Active] = 1 AND [MBS].[Is_Delete] = 0
+					LEFT JOIN [Company].[dbo].[Map_Comp_Branch] MCB ON [MCB].[Branch_ID] = [MBS].[Branch_ID] 
+						AND [MCB].[Is_Active] = 1 AND [MCB].[Is_Delete] = 0
+					LEFT JOIN [Company].[dbo].[Branch_By_Comp] BS ON [BS].[Branch_ID] = [MBS].[Branch_ID] 
+						AND [BS].[Is_Active] = 1 AND [BS].[Is_Delete] = 0
+					WHERE [MSP].[Is_Active] = 1 AND [MSP].[Is_Delete] = 0
+				) MSP ON [MSP].[Project_Client_ID] = [PC].[Project_Client_ID]
+				WHERE [PC].[Is_Active] = 1 AND [PC].[Is_Delete] = 0
+			) PC ON [PC].[Project_Client_ID] = [MPP].[Project_Client_ID]
+			WHERE [MPP].[Is_Active] = 1 AND [MPP].[Is_Delete] = 0
+		) MPP ON [MPP].[Project_Position_ID] = [PP].[Project_Position_ID]
+		LEFT JOIN (
+			SELECT [MSP].[Project_Position_ID]
+					,[S].[Site_ID]
+					,[S].[Site_Name]
+					,[BS].[Branch_ID]
+					,[BS].[Branch_Name]
+					,[Comp_Site] = [MCS].[Company_ID]
+					,[Comp_Branch_Site] = [MCB].[Company_ID]
+			FROM [Company].[dbo].[Map_Site_Position] MSP
+			LEFT JOIN [Company].[dbo].[Map_Comp_Site] MCS ON [MCS].[Site_ID] = [MSP].[Site_ID] 
+				AND [MSP].[Is_Active] = 1 AND [MSP].[Is_Delete] = 0
+			LEFT JOIN [Company].[dbo].[Site] S ON [S].[Site_ID] = [MSP].[Site_ID] AND [S].[Is_Active] = 1
+			LEFT JOIN [Company].[dbo].[Map_Branch_Site] MBS ON [MBS].[Site_ID] = [MSP].[Site_ID] 
+				AND [MBS].[Is_Active] = 1 AND [MBS].[Is_Delete] = 0
+			LEFT JOIN [Company].[dbo].[Map_Comp_Branch] MCB ON [MCB].[Branch_ID] = [MBS].[Branch_ID] 
+				AND [MCB].[Is_Active] = 1 AND [MCB].[Is_Delete] = 0
+			LEFT JOIN [Company].[dbo].[Branch_By_Comp] BS ON [BS].[Branch_ID] = [MBS].[Branch_ID] 
+				AND [BS].[Is_Active] = 1 AND [BS].[Is_Delete] = 0
+			WHERE [MSP].[Is_Active] = 1 AND [MSP].[Is_Delete] = 0
+		) MSP ON [MSP].[Project_Position_ID] = [PP].[Project_Position_ID] 
+		LEFT JOIN (
+			SELECT [MBP].[Project_Position_ID]
+					,[BS].[Branch_ID]
+					,[BS].[Branch_Name]
+					,[Comp_Branch] = [MCB].[Company_ID]
+			FROM [Company].[dbo].[Map_Branch_Position] MBP
+			LEFT JOIN [Company].[dbo].[Map_Comp_Branch] MCB ON [MCB].[Branch_ID] = [MBP].[Branch_ID] 
+				AND [MCB].[Is_Active] = 1 AND [MCB].[Is_Delete] = 0
+			LEFT JOIN [Company].[dbo].[Branch_By_Comp] BS ON [BS].[Branch_ID] = [MBP].[Branch_ID] 
+				AND [BS].[Is_Active] = 1 AND [BS].[Is_Delete] = 0
+			WHERE [MBP].[Is_Active] = 1 AND [MBP].[Is_Delete] = 0
+		) MBP ON [MBP].[Project_Position_ID] = [PP].[Project_Position_ID]
+		LEFT JOIN [Company].[dbo].[Company] COM ON (
+			[COM].[Company_ID] = [MCPP].[Company_ID]
+			OR [COM].[Company_ID] = [MPP].[Comp_Branch_Project]
+			OR [COM].[Company_ID] = [MPP].[Comp_Branch_Site_Project]
+			OR [COM].[Company_ID] = [MPP].[Comp_Project]
+			OR [COM].[Company_ID] = [MPP].[Comp_Site_Project]
+			OR [COM].[Company_ID] = [MSP].[Comp_Branch_Site]
+			OR [COM].[Company_ID] = [MSP].[Comp_Site]
+			OR [COM].[Company_ID] = [MBP].[Comp_Branch]
+		)
+	),Position_All AS (
+		 -- Position (System)
+		 SELECT
+		     P.Position_ID,
+		     P.Position_Name,
+		     2 AS Position_By_Com_Type_ID
+		 FROM RMS_Position.dbo.Position P
+		 UNION ALL
+		 -- Position Temp (Company)
+		 SELECT
+		     PT.Position_Temp_ID AS Position_ID,
+		     PT.Position_Name,
+		     1 AS Position_By_Com_Type_ID
+		 FROM RMS_Position.dbo.Position_Temp PT
+),	PositionByComp AS (
+		SELECT 
+			[PB].[Position_By_Com_ID],
+			[PB].[Position_By_Com_Type_ID],
+			[Position_ID_OF_Com] = [PB].[Position_ID]
+		FROM [RMS_Position].[dbo].[Position_By_Comp] PB
+	),
+ProjectPositionResolved AS (
+    SELECT
+        PP.*,
+        CASE
+            WHEN ISNULL(PP.Position_By_Comp_ID, 0) = 0 THEN PP.Position_ID
+            WHEN PB.Position_By_Com_Type_ID = 1 THEN PT.Position_Temp_ID
+            ELSE PB.Position_ID
+        END AS Final_Position_ID
+    FROM Company.dbo.Project_Position PP
+    LEFT JOIN RMS_Position.dbo.Position_By_Comp PB
+        ON PB.Position_By_Com_ID = PP.Position_By_Comp_ID
+    LEFT JOIN RMS_Position.dbo.Position_Temp PT
+        ON PT.Position_Temp_ID = PB.Position_ID
+		
+	left join PositionByComp pc on pc.Position_By_Com_ID = PP.Project_Position_ID
+	
+
+	)
+		--SELECT
+		--    PP.Position_By_Comp_ID,
+		--    PP.*,
+		--    P.Position_Name
+		--	,P.Position_By_Com_Type_ID
+		--FROM ProjectPositionResolved PP
+		--LEFT JOIN Position_All P
+		--    ON P.Position_ID = PP.Final_Position_ID
+	-- select [ACTIVE]
+
+
+	SELECT 
+	--	[sell_CliantName] = CASE WHEN [MUP].[Owner_Name] IS NOT NULL THEN [MUP].[Owner_Name] ELSE '-' END,
+		--P.Position_Name,
+	--PP.*,
+	e.*
+	--,ct.Contract_Type_Name
+	--,ste.Status_Contract_EMP_Name
+	FROM Employee_info e
+--	left join Contract_Type ct on ct.Contract_Type_ID = e.Contract_Type_ID_OF_Com
+	--left join [Employee].[dbo].[Status_Contract_EMP] ste on ste.Status_Contract_EMP_ID = e.Status_Contract_EMP_ID
+
+	-- Get Project Position details
+	--LEFT JOIN ProjectPositions PP ON [PP].[Project_Position_ID] = e.[Project_Position_ID]
+	--LEFT JOIN (
+	--	SELECT [MUP].[Project_Position_ID],
+	--		[Owner_Name] = [P].[Full_Name],
+	--		[MUP].[Person_ID],
+	--		[MUP].[Is_Active]
+	--	FROM [Company].[dbo].[Map_User_PrjPosi] MUP
+	--	LEFT JOIN [Person].[dbo].[Person] P ON [P].[Person_ID] = [MUP].[Person_ID]
+	--) MUP ON [MUP].[Project_Position_ID] = [PP].[Project_Position_ID] AND [MUP].[Is_Active] = 1
+	--left join ProjectPositionResolved pr ON pr.Position_ID = MUP.Project_Position_ID 
+	--LEFT JOIN Position_All P  ON P.Position_ID = pr.Final_Position_ID
+	--left join ProjectPositionResolved 
+	WHERE e.Is_Active = 1
+	  AND e.Is_Deleted = 0;
+
+  -- position_By_Com_ID    position_ID_Of_Com
+  -- (Position Of Project)    (Position Of Employee)
+
+
+		--SELECT 
+		--	[PB].[Position_By_Com_ID],
+		--	[PB].[Position_By_Com_Type_ID],
+		--	[Position_ID_OF_Com] = [PB].[Position_ID]
+		--FROM [RMS_Position].[dbo].[Position_By_Comp] PB
+		--where Position_By_Com_ID in (1291,2)

@@ -1,0 +1,63 @@
+{
+    "database_name": "CheckCertificate",
+    "server": "10.88.88.200",
+    "export_date": "2026-02-17T15:43:28.310141",
+    "total_tables": 2,
+    "schema": {
+        "dbo.CertificateCheck": {
+            "schema": "dbo",
+            "table_name": "CertificateCheck",
+            "columns": [
+                {
+                    "column_name": "Certificate_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "CertificateName",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                }
+            ]
+        },
+        "dbo.WEBCheck": {
+            "schema": "dbo",
+            "table_name": "WEBCheck",
+            "columns": [
+                {
+                    "column_name": "WEB_ID",
+                    "data_type": "int",
+                    "ordinal_position": 1,
+                    "is_nullable": "NO",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                },
+                {
+                    "column_name": "WEBName",
+                    "data_type": "nchar",
+                    "ordinal_position": 2,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "max_length": 500
+                },
+                {
+                    "column_name": "CertificateID",
+                    "data_type": "int",
+                    "ordinal_position": 3,
+                    "is_nullable": "YES",
+                    "column_default": null,
+                    "precision": 10,
+                    "scale": 0
+                }
+            ]
+        }
+    }
+}
